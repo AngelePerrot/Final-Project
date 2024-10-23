@@ -1,35 +1,59 @@
-# my-todo-project
+# Christmas To-Do App
 
-This template should help get you started developing with Vue 3 in Vite.
+## Table of Contents
 
-## Recommended IDE Setup
+- [Project Description](#project-description)
+- [User Stories](#user-stories)
+- [UX Design](#ux-design)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Testing](#testing)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Project Description
 
-## Customize configuration
+The Christmas To-Do App is a simple and festive application designed to help users manage their holiday tasks and activities. Users can create, edit, and delete to-do items, ensuring they stay organized and on track during the busy holiday season.
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## User Stories
 
-## Project Setup
+- As a user, I want to create a new to-do item so that I can keep track of my holiday tasks.
+- As a user, I want to edit an existing to-do item so that I can update my progress.
+- As a user, I want to delete a to-do item so that I can remove tasks that are no longer relevant.
+- As a user, I want to mark a to-do item as complete so that I can celebrate my achievements.
+- As a user, I want to filter my to-do items by category (e.g., shopping, decorating, etc.) to better organize my tasks.
 
-```sh
-npm install
-```
+## UX Design
 
-### Compile and Hot-Reload for Development
+- Wireframes and mockups are available [here](link-to-designs).
+- The app will feature a festive design, including holiday-themed colors and icons to enhance user experience.
 
-```sh
-npm run dev
-```
+## Features
 
-### Compile and Minify for Production
+- Create, edit, and delete to-do items
+- Mark items as complete
+- Filter tasks by category
+- Responsive design for mobile and desktop devices
 
-```sh
-npm run build
-```
+## Technologies Used
 
-### Lint with [ESLint](https://eslint.org/)
+- Vue.js
+- Vite
+- Vue Router
+- Pinia (for state management)
+- Supabase (for database)
+- CSS (for styling) along with Bootstrap framework
 
-```sh
-npm run lint
-```
+## Testing
+
+- Unit tests will be conducted using.
+- End-to-end testing will be performed to ensure the app's functionality aligns with user stories.
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/AngelePerrot/Final-Project.git
+   ```
