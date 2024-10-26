@@ -21,6 +21,9 @@ const isAuthRoute = computed(() => {
   const currentPath = router.currentRoute.value.path
   return currentPath.startsWith('/auth')
 })
+
+const brand = "Secret Santa"
+const location = "Rovaniemi, Finland"
 </script>
 
 <template>
@@ -42,7 +45,7 @@ const isAuthRoute = computed(() => {
     </main>
 
     <!-- Footer block-->
-    <Footer />
+    <Footer :brand :location></Footer>
   </div>
 </template>
 
