@@ -1,6 +1,5 @@
 <script setup>
-import { onMounted } from 'vue'
-import { storeToRefs } from 'pinia'
+import { onMounted, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/Store/userStore'
 
@@ -9,21 +8,18 @@ import Footer from './components/Footer.vue'
 
 const router = useRouter()
 const userStore = useUserStore()
-const { user } = storeToRefs(userStore)
 
 onMounted(async () => {
   try {
-    await userStore.fetchUser() // here we call fetch user
-    if (!user.value) {
-      // redirect them to logout if the user is not there
-      router.push({ path: '/auth' })
-    } else {
-      // continue to dashboard
-      router.push({ path: '/' })
-    }
-  } catch (e) {
-    console.log(e)
+    await userStore.fetchUser()
+  } catch (error) {
+    console.log(error.message)
   }
+})
+
+const isAuthRoute = computed(() => {
+  const currentPath = router.currentRoute.value.path
+  return currentPath.startsWith('/auth')
 })
 </script>
 
@@ -32,8 +28,18 @@ onMounted(async () => {
     <!-- Navbar block-->
     <Navbar />
 
-    <!-- Router block för andra vyer -->
-    <router-view></router-view>
+    <!-- Router View-->
+    <main>
+      <div
+        class="container d-flex justify-content-center"
+        style="padding: 50px 0 100px 0"
+      >
+        <transition name="fade" v-if="!isAuthRoute">
+          <RouterView />
+        </transition>
+        <RouterView v-else />
+      </div>
+    </main>
 
     <!-- Footer block-->
     <Footer />

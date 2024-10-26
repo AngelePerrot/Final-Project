@@ -1,6 +1,23 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
 import { RouterLink } from 'vue-router'
+import { computed } from 'vue'
+import { useRouter } from 'vue-router'
+import { useUserStore } from '@/Store/userStore'
+
+const userStore = useUserStore()
+const router = useRouter()
+const isLoggedIn = computed(() => userStore.isLoggedIn)
+
+const signOut = async () => {
+  try {
+    await userStore.signOut()
+    router.push({ path: '/' })
+    console.log('Signed out successfully')
+  } catch (error) {
+    console.log(error)
+  }
+}
 </script>
 
 <template>
@@ -15,11 +32,34 @@ import { RouterLink } from 'vue-router'
       <RouterLink to="/contact"> Contacts </RouterLink>
     </div>
 
-    <div class="btn-group">
-      <RouterLink to="/Auth">
-        <button type="button" class="btn btn-outline-primary">Sign Up</button>
-        <button type="button" class="btn btn-outline-primary">Log In</button>
-      </RouterLink>
+    <!--########################-->
+    <!-- Authentication Section -->
+    <!--######################-->
+    <div
+      class="btn-group d-flex gap-4"
+      role="group"
+      aria-label="Authentication buttons"
+    >
+      <!-- IF authenticated - SIGN OUT-->
+      <div
+        v-if="isLoggedIn"
+        class="nav-item d-flex align-items-center justify-content-center"
+      >
+        <button @click="signOut" class="nav-link btn btn-link text-center">
+          SIGN OUT
+        </button>
+      </div>
+
+      <!-- Sign In-->
+      <div v-else class="d-flex gap-3">
+        <router-link to="/auth/signIn" class="nav-link btn text-center">
+          Sign In
+        </router-link>
+        <!-- Sign Up-->
+        <router-link to="/auth/signUp" class="nav-link btn text-center">
+          Sign Up
+        </router-link>
+      </div>
     </div>
   </nav>
 </template>
@@ -38,11 +78,11 @@ import { RouterLink } from 'vue-router'
 }
 
 .logo-image img {
-  width: 100px;
-  height: 100px;
+  width: 75px;
+  height: 75px;
   border-radius: 50%;
   background-color: white;
-  margin: 10px 0 0 10px;
+  margin: auto;
 }
 
 .menu {
