@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.6",
+    "bootstrap": "^5.3.3",
     "pinia": "^2.2.4",
     "pinia-plugin-persist": "^1.0.0",
     "vue": "^3.5.12",
