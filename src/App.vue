@@ -22,8 +22,8 @@ const isAuthRoute = computed(() => {
   return currentPath.startsWith('/auth')
 })
 
-const brand = "Secret Santa"
-const location = "Rovaniemi, Finland"
+const brand = 'Secret Santa'
+const location = 'Rovaniemi, Finland'
 </script>
 
 <template>
@@ -33,10 +33,7 @@ const location = "Rovaniemi, Finland"
 
     <!-- Router View-->
     <main>
-      <div
-        class="container d-flex justify-content-center"
-        style="padding: 50px 0 100px 0"
-      >
+      <div>
         <transition name="fade" v-if="!isAuthRoute">
           <RouterView />
         </transition>

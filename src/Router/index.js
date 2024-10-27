@@ -5,6 +5,7 @@ import Auth from '@/components/Auth/Auth.vue'
 import SignIn from '@/components/Auth/SignIn.vue'
 import SignUp from '@/components/Auth/SignUp.vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import Forgot from '@/components/Auth/Forgot.vue'
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
@@ -30,6 +31,7 @@ const routes = [
   },
   { path: '/About', name: 'About', component: About },
   { path: '/Contact', name: 'Contact', component: Contact },
+  { path: '/forgot', name: 'Forgot', component: Forgot },
 ]
 
 const router = createRouter({

@@ -14,7 +14,8 @@ const signIn = async () => {
     redirect.push({ path: '/' })
     console.log('Successfully signed in')
   } catch (error) {
-    console.error(error.message)
+    alert('Wrong password')
+    console.log(error)
   }
 }
 </script>
@@ -24,6 +25,7 @@ const signIn = async () => {
     <div class="form-card">
       <h2 class="form-title">Sign In</h2>
       <form @submit.prevent="signIn">
+        <label for="email" class="col-12 mb-2">Email</label>
         <input
           v-model="email"
           type="email"
@@ -31,6 +33,7 @@ const signIn = async () => {
           required
           class="form-input"
         />
+        <label for="Password" class="col-12 mb-2">Password</label>
         <input
           v-model="password"
           type="password"
@@ -38,6 +41,9 @@ const signIn = async () => {
           required
           class="form-input"
         />
+        <p class="forgot-password">
+          <router-link to="/forgot">Forgot Password?</router-link>
+        </p>
         <button type="submit" class="submit-btn">Log In</button>
       </form>
     </div>
@@ -45,19 +51,22 @@ const signIn = async () => {
 </template>
 
 <style scoped>
-.signup-container {
+.Login-container {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  width: 100vw;
   background: no-repeat center center fixed;
-  background-image: url('/src/assets/img/Gift-box.png');
+  background-image: url('/src/assets/img/Background-img-Auth.jpg');
   background-size: cover;
+  overflow: hidden;
+  margin: 0;
 }
 
 .form-card {
   background: rgba(255, 255, 255, 0.9);
-  padding: 2rem;
+  padding: 3rem;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -67,17 +76,17 @@ const signIn = async () => {
 
 .form-title {
   color: #213c18;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
-  margin-bottom: 1rem;
-  font-family: 'Merry Christmas', sans-serif; /* Add a festive font */
+  margin-bottom: 2rem;
+  font-family: 'Merry Christmas', sans-serif;
 }
 
 .form-input {
   display: block;
   width: 100%;
   padding: 0.75rem;
-  margin: 0.5rem 0;
+  margin: 0.2rem 0 1rem 0;
   border: 1px solid #213c18;
   border-radius: 8px;
   font-size: 1rem;
@@ -99,7 +108,6 @@ const signIn = async () => {
   background-color: #7b0a0a;
 }
 
-/* Decorations for festive feel */
 .signup-container::before {
   content: '';
   position: absolute;
@@ -107,7 +115,6 @@ const signIn = async () => {
   left: -10px;
   right: -10px;
   bottom: -10px;
-  /*background: url('/path/to/your/snowflakes-overlay.png') repeat center;*/
   opacity: 0.3;
   z-index: 0;
 }

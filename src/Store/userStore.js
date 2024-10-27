@@ -101,10 +101,11 @@ export const useUserStore = defineStore('user', {
             redirectTo: production_url, // Switching between production or development
           },
         )
-        if (error) throw error
+        if (error) throw error // Handle the error
+        return data // Return the data if needed
       } catch (error) {
         console.error('Password reset failed:', error.message)
-        throw error
+        throw error // Re-throw the error for handling in the component
       }
     },
 
@@ -115,6 +116,7 @@ export const useUserStore = defineStore('user', {
           password: newPassword,
         })
         if (error) throw error
+        return data // Return updated user data if needed
       } catch (error) {
         console.error('Update password failed:', error.message)
         throw error

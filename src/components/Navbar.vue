@@ -52,11 +52,11 @@ const signOut = async () => {
 
       <!-- Sign In-->
       <div v-else class="d-flex gap-3">
-        <router-link to="/auth/signIn" class="nav-link btn text-center">
+        <router-link to="/auth/signIn" class="nav-link-left btn text-center">
           Sign In
         </router-link>
         <!-- Sign Up-->
-        <router-link to="/auth/signUp" class="nav-link btn text-center">
+        <router-link to="/auth/signUp" class="nav-link-right btn text-center">
           Sign Up
         </router-link>
       </div>
@@ -92,7 +92,7 @@ const signOut = async () => {
 }
 
 .menu a {
-  margin: 0 20px;
+  margin: 0 0 0 150px;
   text-decoration: none;
   color: white;
 }
@@ -100,7 +100,20 @@ const signOut = async () => {
 .btn-group {
   display: flex;
   justify-content: flex-end;
-  margin-right: 20px;
-  /*color: #65714f;*/
+  margin-right: 15px;
+}
+
+.nav-link-left,
+.nav-link-right {
+  font-size: 1.5rem;
+  color: #213c18;
+}
+
+.nav-link-left:hover {
+  color: #7b0a0a;
+}
+
+.nav-link-right:hover {
+  color: #7b0a0a;
 }
 </style>

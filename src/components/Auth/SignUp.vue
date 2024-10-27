@@ -86,14 +86,17 @@ const signup = async () => {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  width: 100vw;
   background: no-repeat center center fixed;
-  background-image: url('/src/assets/img/Gift-box.png');
+  background-image: url('/src/assets/img/Background-img-Auth.jpg');
   background-size: cover;
+  overflow: hidden;
+  margin: 0 auto;
 }
 
 .form-card {
   background: rgba(255, 255, 255, 0.9);
-  padding: 2rem;
+  padding: 3rem;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   text-align: center;
