@@ -25,6 +25,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     width: 350px;
     border: 1px solid #e18d8d;
     border-radius: 10%;
