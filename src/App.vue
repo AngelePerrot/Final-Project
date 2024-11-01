@@ -42,7 +42,7 @@ const location = 'Rovaniemi, Finland'
     </main>
 
     <!-- Footer block-->
-    <Footer :brand :location></Footer>
+    <Footer :brand="brand" :location="location"></Footer>
   </div>
 </template>
 

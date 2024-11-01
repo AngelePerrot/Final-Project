@@ -10,13 +10,8 @@ const router = useRouter()
 const isLoggedIn = computed(() => userStore.isLoggedIn)
 
 const signOut = async () => {
-  try {
-    await userStore.signOut()
-    router.push({ path: '/' })
-    console.log('Signed out successfully')
-  } catch (error) {
-    console.log(error)
-  }
+  await userStore.signOut()
+  router.push({ path: '/' })
 }
 </script>
 
@@ -28,7 +23,8 @@ const signOut = async () => {
 
     <div class="menu">
       <RouterLink to="/"> Home </RouterLink>
-      <RouterLink to="/about"> About </RouterLink>
+      <RouterLink v-if="isLoggedIn" to="/UserView"> Application </RouterLink>
+      <RouterLink v-else to="/about"> About </RouterLink>
       <RouterLink to="/contact"> Contacts </RouterLink>
     </div>
 
@@ -45,9 +41,17 @@ const signOut = async () => {
         v-if="isLoggedIn"
         class="nav-item d-flex align-items-center justify-content-center"
       >
-        <button @click="signOut" class="nav-link btn btn-link text-center">
-          SIGN OUT
-        </button>
+        <div class="text-center d-flex">
+          <div class="p-3">
+            Welcome,
+            <span class="m-0">{{
+              userStore.profile?.full_name || userStore.user?.email
+            }}</span>
+          </div>
+          <button @click="signOut" class="nav-link-left btn text-center">
+            SIGN OUT
+          </button>
+        </div>
       </div>
 
       <!-- Sign In-->
@@ -115,5 +119,16 @@ const signOut = async () => {
 
 .nav-link-right:hover {
   color: #7b0a0a;
+}
+
+.nav-item .text-center .p-3 {
+  font-size: 1.5rem;
+  color: #213c18;
+}
+
+.nav-item .text-center span {
+  font-size: 1.5rem;
+  color: #213c18;
+  font-weight: bold;
 }
 </style>

@@ -1,49 +1,49 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
 import { RouterLink } from 'vue-router'
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue'
 
 defineProps({
   brand: String,
   location: {
     type: String,
-    default: "Worldwide"
-  }
+    default: 'Worldwide',
+  },
 })
 
 const countdown = ref({
   days: 0,
   hours: 0,
   minutes: 0,
-  seconds: 0
-});
+  seconds: 0,
+})
 
 function calculateCountdown() {
-  const now = new Date();
-  const christmas = new Date(now.getFullYear(), 11, 25); // Month is 0-indexed, so 11 is December
+  const now = new Date()
+  const christmas = new Date(now.getFullYear(), 11, 25) // Month is 0-indexed, so 11 is December
 
   if (now > christmas) {
-    christmas.setFullYear(christmas.getFullYear() + 1); // Move to next year's Christmas if past Dec 25
+    christmas.setFullYear(christmas.getFullYear() + 1) // Move to next year's Christmas if past Dec 25
   }
 
-  const timeDifference = christmas - now;
+  const timeDifference = christmas - now
 
-  countdown.value.days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-  countdown.value.hours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
-  countdown.value.minutes = Math.floor((timeDifference / (1000 * 60)) % 60);
-  countdown.value.seconds = Math.floor((timeDifference / 1000) % 60);
+  countdown.value.days = Math.floor(timeDifference / (1000 * 60 * 60 * 24))
+  countdown.value.hours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24)
+  countdown.value.minutes = Math.floor((timeDifference / (1000 * 60)) % 60)
+  countdown.value.seconds = Math.floor((timeDifference / 1000) % 60)
 }
 
-let countdownInterval;
+let countdownInterval
 
 onMounted(() => {
-  calculateCountdown(); // Initial calculation
-  countdownInterval = setInterval(calculateCountdown, 1000); // Update every second
-});
+  calculateCountdown() // Initial calculation
+  countdownInterval = setInterval(calculateCountdown, 1000) // Update every second
+})
 
 onUnmounted(() => {
-  clearInterval(countdownInterval); // Clean up interval on component unmount
-});
+  clearInterval(countdownInterval) // Clean up interval on component unmount
+})
 </script>
 
 <template>
@@ -70,14 +70,13 @@ onUnmounted(() => {
           <span class="label">Seconds</span>
         </div>
       </div>
-
     </div>
 
-    <hr>
+    <hr />
 
     <!-- Footer Content: Logo, Navigation, Social Media Icons-->
     <div class="footer-content">
-      <img src="@/assets/img/file.png" alt="Logo Icon" class="logo">
+      <img src="@/assets/img/file.png" alt="Logo Icon" class="logo" />
 
       <!-- Added functionality like in the Navbar with RouterLink -->
       <nav class="footer-nav">
@@ -93,12 +92,12 @@ onUnmounted(() => {
         <a href="#"><i class="bi bi-twitter"></i></a>
         <a href="#"><i class="bi bi-tiktok"></i></a>
       </div>
-
     </div>
 
-    
-
-    <p class="copyright">&copy; 2024 {{ brand }} | {{ location }} <br> All rights reserved</p>
+    <p class="copyright">
+      &copy; 2024 {{ brand }} | {{ location }} <br />
+      All rights reserved
+    </p>
   </div>
 </template>
 
