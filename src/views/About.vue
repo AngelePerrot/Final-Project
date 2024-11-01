@@ -35,7 +35,6 @@
 <style scoped>
 .home-container {
   min-height: 100vh;
-  background-image: url('@/assets/img/christmas-bg.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
