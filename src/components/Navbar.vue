@@ -41,21 +41,13 @@ const signOut = async () => {
         v-if="isLoggedIn"
         class="nav-item d-flex align-items-center justify-content-center"
       >
-        <div class="text-center d-flex">
-          <div class="p-3">
-            Welcome,
-            <span class="m-0">{{
-              userStore.profile?.full_name || userStore.user?.email
-            }}</span>
-          </div>
-          <button @click="signOut" class="nav-link-left btn text-center">
-            SIGN OUT
-          </button>
-        </div>
+        <button @click="signOut" class="nav-link-left btn text-center">
+          SIGN OUT
+        </button>
       </div>
 
       <!-- Sign In-->
-      <div v-else class="d-flex gap-3">
+      <div v-else class="d-flex">
         <router-link to="/auth/signIn" class="nav-link-left btn text-center">
           Sign In
         </router-link>
@@ -79,6 +71,7 @@ const signOut = async () => {
   background-color: #e5d5bb;
   width: 100%;
   height: 100px;
+  font-family: 'Chicle', serif;
 }
 
 .logo-image img {

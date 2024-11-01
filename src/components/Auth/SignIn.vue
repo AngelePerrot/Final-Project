@@ -57,7 +57,7 @@ const signIn = async () => {
   min-height: 100vh;
   width: 100vw;
   background: no-repeat center center fixed;
-  background-image: url('/src/assets/img/Background-img-Auth.jpg');
+  background-image: url('/src/assets/img/C-tree.jpg');
   background-size: cover;
   overflow: hidden;
   margin: 0;
@@ -78,7 +78,7 @@ const signIn = async () => {
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 2rem;
-  font-family: 'Merry Christmas', sans-serif;
+  font-family: 'Great Vibes', cursive;
 }
 
 .form-input {
