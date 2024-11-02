@@ -8,14 +8,16 @@ const password = ref('')
 
 const redirect = useRouter()
 
+const userStore = useUserStore()
+
 const signIn = async () => {
   try {
-    await useUserStore().signIn(email.value, password.value)
+    await userStore.signIn(email.value, password.value)
+    await userStore.fetchUser()
     redirect.push({ path: '/' })
-    console.log('Successfully signed in')
   } catch (error) {
     alert('Wrong password')
-    console.log(error)
+    throw error
   }
 }
 </script>
@@ -41,9 +43,6 @@ const signIn = async () => {
           required
           class="form-input"
         />
-        <p class="forgot-password">
-          <router-link to="/forgot">Forgot Password?</router-link>
-        </p>
         <button type="submit" class="submit-btn">Log In</button>
       </form>
     </div>
@@ -58,7 +57,7 @@ const signIn = async () => {
   min-height: 100vh;
   width: 100vw;
   background: no-repeat center center fixed;
-  background-image: url('/src/assets/img/Background-img-Auth.jpg');
+  background-image: url('/src/assets/img/C-tree.jpg');
   background-size: cover;
   overflow: hidden;
   margin: 0;
@@ -79,7 +78,7 @@ const signIn = async () => {
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 2rem;
-  font-family: 'Merry Christmas', sans-serif;
+  font-family: 'Great Vibes', cursive;
 }
 
 .form-input {
@@ -90,22 +89,6 @@ const signIn = async () => {
   border: 1px solid #213c18;
   border-radius: 8px;
   font-size: 1rem;
-}
-
-.submit-btn {
-  background-color: #880c0c;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.submit-btn:hover {
-  background-color: #7b0a0a;
 }
 
 .signup-container::before {
