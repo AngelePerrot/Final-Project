@@ -103,7 +103,7 @@ function togglePage() {
         <div class="content">
             <!-- Left Side: Introduction -->
             <div class="intro">
-                <h3>Jingle All the Way to the Perfect Christmas!</h3>
+                <h3>Your Christmas Wish List Awaits!</h3>
                 <p>
                     This magical list is your go-to guide for holiday gifts, scrumptious groceries, and delightful drinks. Let’s make this season unforgettable and ensure we don’t miss a thing!
                 </p>
