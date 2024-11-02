@@ -9,7 +9,7 @@ import ListLayout from './ListLayout.vue';
 
 <template>
   <div class="list">
-    <h1>Christmas Bucket List</h1>
+    <h1>Christmas Bliss List</h1>
     <ul>
       <ListLayout v-for="list in bucketList" :key="list.id">
 
