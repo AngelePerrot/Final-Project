@@ -45,6 +45,7 @@ The Christmas To-Do App is a simple and festive application designed to help use
 - Pinia (for state management)
 - Supabase (for database)
 - CSS (for styling) along with Bootstrap framework
+- Axios for Email Service
 
 ## Testing
 

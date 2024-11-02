@@ -23,6 +23,8 @@ const isAuthRoute = computed(() => {
 const brand = "Santa's Secret"
 const location = 'Rovaniemi, Finland'
 
+</script>
+
 const bucketList = ref([
   {
     id: 1,
@@ -105,8 +107,10 @@ const bucketList = ref([
   <div>
     <!-- Navbar block-->
     <Navbar />
+
     <Header :brand="brand"></Header>
     <BucketList :bucketList="bucketList"></BucketList>
+
     <!-- Router View-->
     <main>
       <div>
