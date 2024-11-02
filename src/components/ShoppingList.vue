@@ -66,6 +66,7 @@ function togglePage() {
 </script>
 
 <template>
+    <!-- Container for the entire components' content -->
     <div class="shopping-list">
 
         <div class="content">
@@ -78,45 +79,47 @@ function togglePage() {
                 </p>
             </div>
 
-            <!-- Right Side: Shopping List in a Box with Page Toggle -->
+            <!-- Right Side: Shopping List with Scrollable Feature -->
             <div class="lists">
                 <div class="list-box">
                     <h2 style="text-align: center;">{{ currentPage === 'food' ? 'Ingredients' : 'Drinks' }}</h2>
 
-                    <!-- Display Food or Drink List Based on Current Page -->
-                    <ul v-if="currentPage === 'food'">
-                        <li v-for="(item, index) in foodList" :key="index" :class="{ bought: item.bought }">
-                            <div class="quantity-display">{{ item.quantity }}</div>
-                            <span @click="toggleBought(item)" class="item-name">
-                                {{ item.name }}
-                            </span>
-                            <div class="action-icons">
-                                <button @click="incrementQuantity(item)" class="icon-button">
-                                    <i class="bi bi-plus"></i>
-                                </button>
-                                <button @click="removeItem(item, 'food')" class="remove-button">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </div>
-                        </li>
-                    </ul>
+                    <!-- Display Food or Drink List with Scrollable Container -->
+                    <div class="scrollable-list">
+                        <ul v-if="currentPage === 'food'">
+                            <li v-for="(item, index) in foodList" :key="index" :class="{ bought: item.bought }">
+                                <div class="quantity-display">{{ item.quantity }}</div>
+                                <span @click="toggleBought(item)" class="item-name">
+                                    {{ item.name }}
+                                </span>
+                                <div class="action-icons">
+                                    <button @click="incrementQuantity(item)" class="icon-button">
+                                        <i class="bi bi-plus"></i>
+                                    </button>
+                                    <button @click="removeItem(item, 'food')" class="remove-button">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                            </li>
+                        </ul>
 
-                    <ul v-else>
-                        <li v-for="(item, index) in drinkList" :key="index" :class="{ bought: item.bought }">
-                            <div class="quantity-display">{{ item.quantity }}</div>
-                            <span @click="toggleBought(item)" class="item-name">
-                                {{ item.name }}
-                            </span>
-                            <div class="action-icons">
-                                <button @click="incrementQuantity(item)" class="icon-button">
-                                    <i class="bi bi-plus"></i>
-                                </button>
-                                <button @click="removeItem(item, 'drink')" class="remove-button">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </div>
-                        </li>
-                    </ul>
+                        <ul v-else>
+                            <li v-for="(item, index) in drinkList" :key="index" :class="{ bought: item.bought }">
+                                <div class="quantity-display">{{ item.quantity }}</div>
+                                <span @click="toggleBought(item)" class="item-name">
+                                    {{ item.name }}
+                                </span>
+                                <div class="action-icons">
+                                    <button @click="incrementQuantity(item)" class="icon-button">
+                                        <i class="bi bi-plus"></i>
+                                    </button>
+                                    <button @click="removeItem(item, 'drink')" class="remove-button">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
                     <!-- Input for Adding New Item -->
                     <div class="add-item-container">
@@ -138,16 +141,14 @@ function togglePage() {
     </div>
 </template>
 
-
 <style scoped>
-/* Style for entire ShoppingList page*/
+/* Style for entire ShoppingList page */
 .shopping-list {
     background-image: url('/src/assets/img/ShoppingListBcg.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 50vh;
-    /* Full viewport height would be 100vh */
+    height: 50vh; /* Full viewport size would be 100vh or could try with pixels */
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -158,7 +159,7 @@ function togglePage() {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 50%; /* Originally was set to 80% */
+    width: 50%; /* Originally it was set at 80% */
     margin-top: 20px;
 }
 
@@ -178,7 +179,7 @@ function togglePage() {
     text-align: justify;
 }
 
-/* Style for the shopping list box*/
+/* Style for the shopping list box */
 .list-box {
     background-image: url('/src/assets/img/PaperBcg.jpg');
     padding: 20px;
@@ -191,9 +192,27 @@ function togglePage() {
     font-size: 20px;
 }
 
-ul {
+/* Scrollable list with maximum height and scrollbar */
+.scrollable-list {
+    max-height: 200px; /* Adjust height as needed */
+    overflow-y: auto; /* Enables vertical scrolling when the content exceeds the max height */
+}
+
+.scrollable-list ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
+}
+
+/* Style for the scrollbar (only for Chrome and Safari) */
+.scrollable-list::-webkit-scrollbar {
+    width: 6px; /* makes the scrollbar thinner */
+}
+
+/* The draggable part of the scrollbar */
+.scrollable-list::-webkit-scrollbar-thumb {
+    background-color: #7b0a0a;
+    border-radius: 5px;
 }
 
 li {
@@ -254,6 +273,7 @@ li {
     color: #9e1212;
 }
 
+/* Style for adding new products */
 .add-item-container {
     display: flex;
     align-items: center;
@@ -285,7 +305,7 @@ li {
 
 /* Style to center the toggle page button */
 .toggle-page-container {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 </style>
