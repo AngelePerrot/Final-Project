@@ -1,14 +1,25 @@
 <script setup>
 import { ref, computed } from 'vue';
 
-const foodList = ref([
+// Gift List
+const giftList = ref([
+    { name: "Gift Angele", quantity: 1, bought: false },
+    { name: "Gift Ana", quantity: 1, bought: false },
+    { name: "Gift Ionela", quantity: 1, bought: false },
+    { name: "Gift Raneem", quantity: 1, bought: false },
+    { name: "Gift Elise", quantity: 1, bought: false },
+]);
+
+// Ingredients List
+const ingredientsList = ref([
     { name: "Turkey", quantity: 1, bought: false },
     { name: "Ham", quantity: 1, bought: false },
     { name: "Potatoes (Kg)", quantity: 2, bought: false },
     { name: "Chocolate", quantity: 4, bought: false },
-    { name: "Spices (cinammon, nutmeg, rosemary)", quantity: 1, bought: false },
+    { name: "Spices (cinnamon, nutmeg, rosemary)", quantity: 1, bought: false },
 ]);
 
+// Drink List
 const drinkList = ref([
     { name: "Red Wine", quantity: 2, bought: false },
     { name: "White Wine", quantity: 2, bought: false },
@@ -17,17 +28,26 @@ const drinkList = ref([
     { name: "Hot chocolate mix", quantity: 4, bought: false },
 ]);
 
-const newFoodItem = ref('');
+const newGiftItem = ref('');
+const newIngredientItem = ref('');
 const newDrinkItem = ref('');
-const currentPage = ref('food');
+const currentPage = ref('gift'); // Start with Gift list
 
 const newItem = computed({
     get() {
-        return currentPage.value === 'food' ? newFoodItem.value : newDrinkItem.value;
+        if (currentPage.value === 'gift') {
+            return newGiftItem.value;
+        } else if (currentPage.value === 'ingredients') {
+            return newIngredientItem.value;
+        } else {
+            return newDrinkItem.value;
+        }
     },
     set(value) {
-        if (currentPage.value === 'food') {
-            newFoodItem.value = value;
+        if (currentPage.value === 'gift') {
+            newGiftItem.value = value;
+        } else if (currentPage.value === 'ingredients') {
+            newIngredientItem.value = value;
         } else {
             newDrinkItem.value = value;
         }
@@ -39,9 +59,12 @@ function toggleBought(item) {
 }
 
 function addItem(type) {
-    if (type === 'food' && newFoodItem.value) {
-        foodList.value.push({ name: newFoodItem.value, quantity: 1, bought: false });
-        newFoodItem.value = '';
+    if (type === 'gift' && newGiftItem.value) {
+        giftList.value.push({ name: newGiftItem.value, quantity: 1, bought: false });
+        newGiftItem.value = '';
+    } else if (type === 'ingredients' && newIngredientItem.value) {
+        ingredientsList.value.push({ name: newIngredientItem.value, quantity: 1, bought: false });
+        newIngredientItem.value = '';
     } else if (type === 'drink' && newDrinkItem.value) {
         drinkList.value.push({ name: newDrinkItem.value, quantity: 1, bought: false });
         newDrinkItem.value = '';
@@ -49,8 +72,10 @@ function addItem(type) {
 }
 
 function removeItem(item, type) {
-    if (type === 'food') {
-        foodList.value = foodList.value.filter(i => i !== item);
+    if (type === 'gift') {
+        giftList.value = giftList.value.filter(i => i !== item);
+    } else if (type === 'ingredients') {
+        ingredientsList.value = ingredientsList.value.filter(i => i !== item);
     } else if (type === 'drink') {
         drinkList.value = drinkList.value.filter(i => i !== item);
     }
@@ -61,7 +86,13 @@ function incrementQuantity(item) {
 }
 
 function togglePage() {
-    currentPage.value = currentPage.value === 'food' ? 'drink' : 'food';
+    if (currentPage.value === 'gift') {
+        currentPage.value = 'ingredients';
+    } else if (currentPage.value === 'ingredients') {
+        currentPage.value = 'drink';
+    } else {
+        currentPage.value = 'gift';
+    }
 }
 </script>
 
@@ -72,33 +103,42 @@ function togglePage() {
         <div class="content">
             <!-- Left Side: Introduction -->
             <div class="intro">
-                <h2>Christmas Culinary Essentials</h2>
+                <h3>Jingle All the Way to the Perfect Christmas!</h3>
                 <p>
-                    This grocery list is your go-to guide for holiday essentials. Every family member can contribute to
-                    making this season special. Let's ensure nothing is missed!
+                    This magical list is your go-to guide for holiday gifts, scrumptious groceries, and delightful drinks. Let’s make this season unforgettable and ensure we don’t miss a thing!
                 </p>
             </div>
 
             <!-- Right Side: Shopping List with Scrollable Feature -->
             <div class="lists">
                 <div class="list-box">
-                    <h2 style="text-align: center;">{{ currentPage === 'food' ? 'Ingredients' : 'Drinks' }}</h2>
-
-                    <!-- Display Food or Drink List with Scrollable Container -->
+                    <h2 style="text-align: center;">{{ currentPage === 'gift' ? 'Gift List' : currentPage === 'ingredients' ?
+                        'Ingredients' : 'Drinks' }}</h2>
+                        
+                        <!-- Display Gift, Food or Drink List with Scrollable Container -->
                     <div class="scrollable-list">
-                        <ul v-if="currentPage === 'food'">
-                            <li v-for="(item, index) in foodList" :key="index" :class="{ bought: item.bought }">
+                        <ul v-if="currentPage === 'gift'">
+                            <li v-for="(item, index) in giftList" :key="index" :class="{ bought: item.bought }">
                                 <div class="quantity-display">{{ item.quantity }}</div>
-                                <span @click="toggleBought(item)" class="item-name">
-                                    {{ item.name }}
-                                </span>
+                                <span @click="toggleBought(item)" class="item-name">{{ item.name }}</span>
                                 <div class="action-icons">
-                                    <button @click="incrementQuantity(item)" class="icon-button">
-                                        <i class="bi bi-plus"></i>
-                                    </button>
-                                    <button @click="removeItem(item, 'food')" class="remove-button">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
+                                    <button @click="incrementQuantity(item)" class="icon-button"><i
+                                            class="bi bi-plus"></i></button>
+                                    <button @click="removeItem(item, 'gift')" class="remove-button"><i
+                                            class="bi bi-trash"></i></button>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <ul v-else-if="currentPage === 'ingredients'">
+                            <li v-for="(item, index) in ingredientsList" :key="index" :class="{ bought: item.bought }">
+                                <div class="quantity-display">{{ item.quantity }}</div>
+                                <span @click="toggleBought(item)" class="item-name">{{ item.name }}</span>
+                                <div class="action-icons">
+                                    <button @click="incrementQuantity(item)" class="icon-button"><i
+                                            class="bi bi-plus"></i></button>
+                                    <button @click="removeItem(item, 'ingredients')" class="remove-button"><i
+                                            class="bi bi-trash"></i></button>
                                 </div>
                             </li>
                         </ul>
@@ -106,16 +146,12 @@ function togglePage() {
                         <ul v-else>
                             <li v-for="(item, index) in drinkList" :key="index" :class="{ bought: item.bought }">
                                 <div class="quantity-display">{{ item.quantity }}</div>
-                                <span @click="toggleBought(item)" class="item-name">
-                                    {{ item.name }}
-                                </span>
+                                <span @click="toggleBought(item)" class="item-name">{{ item.name }}</span>
                                 <div class="action-icons">
-                                    <button @click="incrementQuantity(item)" class="icon-button">
-                                        <i class="bi bi-plus"></i>
-                                    </button>
-                                    <button @click="removeItem(item, 'drink')" class="remove-button">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
+                                    <button @click="incrementQuantity(item)" class="icon-button"><i
+                                            class="bi bi-plus"></i></button>
+                                    <button @click="removeItem(item, 'drink')" class="remove-button"><i
+                                            class="bi bi-trash"></i></button>
                                 </div>
                             </li>
                         </ul>
@@ -124,15 +160,15 @@ function togglePage() {
                     <!-- Input for Adding New Item -->
                     <div class="add-item-container">
                         <input v-model="newItem" :placeholder="`Add new ${currentPage} item`" class="add-item-input" />
-                        <button @click="addItem(currentPage)" class="icon-button">
-                            <i class="bi bi-plus-square"></i>
-                        </button>
+                        <button @click="addItem(currentPage)" class="icon-button"><i
+                                class="bi bi-plus-square"></i></button>
                     </div>
 
                     <!-- Toggle Button for Pages -->
                     <div class="toggle-page-container">
                         <button class="toggle-page" @click="togglePage">
-                            Go to {{ currentPage === 'food' ? 'Drinks' : 'Food' }} Page
+                            Go to {{ currentPage === 'gift' ? 'Ingredients' : currentPage === 'ingredients' ? 'Drinks' : 'Gifts' }}
+                            Page
                         </button>
                     </div>
                 </div>
@@ -142,7 +178,7 @@ function togglePage() {
 </template>
 
 <style scoped>
-/* Style for entire ShoppingList page */
+/* General styles for the shopping list layout */
 .shopping-list {
     background-image: url('/src/assets/img/ShoppingListBcg.png');
     background-size: cover;
@@ -159,7 +195,7 @@ function togglePage() {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 50%; /* Originally it was set at 80% */
+    width: 50%;
     margin-top: 20px;
 }
 
@@ -168,7 +204,7 @@ function togglePage() {
     width: 45%;
 }
 
-.intro h2 {
+.intro h3 {
     color: #7b0a0a;
     text-align: center;
 }
@@ -195,7 +231,7 @@ function togglePage() {
 /* Scrollable list with maximum height and scrollbar */
 .scrollable-list {
     max-height: 200px; /* Adjust height as needed */
-    overflow-y: auto; /* Enables vertical scrolling when the content exceeds the max height */
+    overflow-y: auto; /* Enables vertical scrolling */
 }
 
 .scrollable-list ul {
@@ -206,7 +242,7 @@ function togglePage() {
 
 /* Style for the scrollbar (only for Chrome and Safari) */
 .scrollable-list::-webkit-scrollbar {
-    width: 6px; /* makes the scrollbar thinner */
+    width: 6px; /* Makes the scrollbar thinner */
 }
 
 /* The draggable part of the scrollbar */
