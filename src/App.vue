@@ -13,7 +13,7 @@ import { ref } from 'vue'
 const router = useRouter()
 const userStore = useUserStore()
 const { user } = storeToRefs(userStore)
-const brand = "Santa's Checklist";
+const brand = "Santa's Secret";
 
 const bucketList = ref([
   { id: 1, name: "Go shopping", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJxnHJloTY_wLFoiUQ7ppEe-EAk4ZmrnsLLw&s"},
@@ -33,7 +33,7 @@ const bucketList = ref([
   { id: 16, name: "Matching Holiday Pajamas", img: "https://media.istockphoto.com/id/1842842526/photo/two-sisters-girls-drink-cocoa-at-home-at-christmas-new-year-concept.jpg?s=612x612&w=0&k=20&c=FV__ujkA8ms9dwS3sTmM_u1WO7TuenK3_Dla5emDnVw="},
   { id: 17, name: "Visit the Christmas market", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiUiGIbbQc18p_uXOXYIzmKKSeIItr0moRjg&s"},
   { id: 18, name: "Write a letter to Santa", img: "https://media.istockphoto.com/id/109723098/photo/pictures-of-real-santa-clauss-list-hes-checking-twice.jpg?s=612x612&w=0&k=20&c=AQwLkHOUnFPvEqNd6llTOWS2TQd8UU4ehqmkDjYhK1s="}
-]);
+])
 
 onMounted(async () => {
   try {
@@ -53,15 +53,15 @@ onMounted(async () => {
 
 <template>
   <div>
-    <!-- Navbar block-->
-    <Navbar />
-    <!--Passing dynamic data as props-->
+     <!-- Navbar block-->
+     <Navbar />
+
+     <!--Passing dynamic data as props-->
     <Header :brand="brand"></Header>
 
-    <!--Bucket List block-->
-    <BucketList :bucketList="bucketList"></BucketList>
+    <!---<BucketList :bucketList="bucketList"></BucketList>-->
 
-    <!-- Router block för andra vyer -->
+    <!--Router block för andra vyer -->
     <router-view></router-view>
 
     <!-- Footer block-->

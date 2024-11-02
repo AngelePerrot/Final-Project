@@ -53,7 +53,7 @@ ul{
   width: 140px;
   height: 150px;
   border-radius: 10%;
-  border: 3px solid #7b0a0a;
+  border: 2px solid #7b0a0a;
 }
 
 </style>
