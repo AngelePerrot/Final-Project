@@ -91,7 +91,7 @@ const bucketList = ref([
   },
   {
     id: 14,
-    name: 'Matching Holiday Pajamas',
+    name: 'Wear Matching Holiday Pajamas',
     img: 'https://media.istockphoto.com/id/1842842526/photo/two-sisters-girls-drink-cocoa-at-home-at-christmas-new-year-concept.jpg?s=612x612&w=0&k=20&c=FV__ujkA8ms9dwS3sTmM_u1WO7TuenK3_Dla5emDnVw=',
   },
   {
@@ -99,7 +99,7 @@ const bucketList = ref([
     name: 'Write a letter to Santa',
     img: 'https://media.istockphoto.com/id/109723098/photo/pictures-of-real-santa-clauss-list-hes-checking-twice.jpg?s=612x612&w=0&k=20&c=AQwLkHOUnFPvEqNd6llTOWS2TQd8UU4ehqmkDjYhK1s=',
   },
-])
+]);
 </script>
 <template>
   <div>
@@ -107,6 +107,7 @@ const bucketList = ref([
     <Navbar />
     <Header :brand="brand"></Header>
     <BucketList :bucketList="bucketList"></BucketList>
+    
     <!-- Router View-->
     <main>
       <div>

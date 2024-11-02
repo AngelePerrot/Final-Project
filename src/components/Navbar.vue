@@ -10,9 +10,9 @@ import { RouterLink } from 'vue-router'
     </div>
 
     <div class="menu">
-      <RouterLink to="/"> Home </RouterLink>
-      <RouterLink to="/about"> About </RouterLink>
-      <RouterLink to="/contact"> Contacts </RouterLink>
+      <RouterLink to="/"> Home </RouterLink>|
+      <RouterLink to="/about"> About </RouterLink>|
+      <RouterLink to="/contact"> Contacts </RouterLink>|
     </div>
 
     <div class="btn-group">
@@ -49,6 +49,7 @@ import { RouterLink } from 'vue-router'
   display: flex;
   justify-content: center;
   flex-grow: 1;
+  color: white;
 }
 
 .menu a {
