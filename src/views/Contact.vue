@@ -5,7 +5,7 @@ import FormInput from '@/components/ContactForms/FormInput.vue'
 import FormTextarea from '@/components/ContactForms/FormTextarea.vue'
 
 const title = 'Contact Form'
-const showForm = true
+const showForm = ref(true)
 const successMessage = ref('')
 
 const initialContactForm = {
@@ -65,37 +65,40 @@ function resetForm() {
   setTimeout(() => {
     successMessage.value = ''
     showForm.value = true
-    Object.assign(contactForm, initialContactFrom)
+    Object.assign(contactForm, initialContactForm)
     Object.assign(touched, initialtouched)
   }, 5000)
 }
 
 async function onSubmit() {
-  if (isFormValid) {
-    const formData = new FormData()
-    formData.append('name', contactForm.name)
-    formData.append('subject', contactForm.subject)
-    formData.append('email', contactForm.email)
-    formData.append('message', contactForm.message)
-    if (contactForm.file) {
-      formData.append('file', contactForm.file, contactForm.file.name)
-    }
-
+  if (isFormValid.value) {
     try {
-      const response = await sendEmail(formData)
-      if (response.status === 200) {
-        showForm.value = false
-        successMessage.value = response.data.message
+      const formData = {
+        name: contactForm.name,
+        email: contactForm.email,
+        subject: contactForm.subject,
+        message: contactForm.message,
+      }
+
+      console.log('Sending email with data:', formData)
+
+      const { success, response } = await sendEmail(formData)
+      console.log('Email response:', response)
+
+      if (success) {
+        successMessage.value =
+          'Thank you! Your message has been sent successfully.'
         showForm.value = false
         resetForm()
       } else {
-        console.error('Failed to send email:', error)
+        throw new Error('Failed to send email')
       }
     } catch (error) {
-      console.error('Error to send email:', error)
+      console.error('Detailed error:', error)
+      alert(`Error sending email: ${error.message}`)
     }
   } else {
-    console.log('Form is not valid')
+    alert('Please fill in all required fields correctly.')
   }
 }
 </script>
@@ -161,7 +164,9 @@ async function onSubmit() {
         </div>
       </form>
       <div v-if="!showForm" class="alert-success">
+        <div class="success-icon">🎄</div>
         {{ successMessage }}
+        <div class="snow"></div>
       </div>
     </div>
   </div>
@@ -227,5 +232,84 @@ h2 {
 
 .alert-success {
   margin-top: 2rem;
+  padding: 2rem;
+  color: #2c5530;
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.8rem;
+  text-align: center;
+  position: relative;
+  animation: fadeIn 0.5s ease-in;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 245, 245, 0.95)
+  );
+  border-radius: 15px;
+  border: 2px solid #c41e3a;
+  box-shadow: 0 4px 15px rgba(196, 30, 58, 0.15);
+}
+
+.success-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.snow {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background-image: radial-gradient(
+      2px 2px at 20px 30px,
+      #fff,
+      rgba(0, 0, 0, 0)
+    ),
+    radial-gradient(2px 2px at 40px 70px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 50px 160px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 90px 40px, #fff, rgba(0, 0, 0, 0));
+  background-size: 200px 200px;
+  animation: snow 4s linear infinite;
+}
+
+@keyframes snow {
+  0% {
+    background-position:
+      0px 0px,
+      0px 0px,
+      0px 0px,
+      0px 0px;
+  }
+  100% {
+    background-position:
+      200px 200px,
+      100px 200px,
+      -100px 200px,
+      -200px 200px;
+  }
 }
 </style>

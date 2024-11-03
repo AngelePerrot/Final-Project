@@ -76,7 +76,7 @@ onUnmounted(() => {
 
     <!-- Footer Content: Logo, Navigation, Social Media Icons-->
     <div class="footer-content">
-      <img src="@/assets/img/file.png" alt="Logo Icon" class="logo" />
+      <img src="@/assets/img/Logo.png" alt="Logo Icon" class="logo" />
 
       <!-- Added functionality like in the Navbar with RouterLink -->
       <nav class="footer-nav">

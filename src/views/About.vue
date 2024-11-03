@@ -24,9 +24,25 @@
         </div>
         <div class="feature-card">
           <span class="feature-icon">✨</span>
-          <h3>Decorations</h3>
-          <p>Plan your festive decorating schedule</p>
+          <h3>Bucket List</h3>
+          <p>
+            A selection of holiday traditions and activities to try with family
+            and friends
+          </p>
         </div>
+      </div>
+
+      <div class="creator-section">
+        <h2>Meet the Creators</h2>
+        <p class="creator-story">
+          Welcome to our Christmas To-Do App! We are Ana, Ionela, and Angele -
+          three passionate developers who created this project as part of our
+          bootcamp final assessment. Our shared love for the holiday season and
+          desire to help others stay organized during this busy time inspired us
+          to create this festive planning tool. We combined our diverse skills
+          and creativity to build an application that brings both functionality
+          and Christmas cheer to your holiday planning experience.
+        </p>
       </div>
     </div>
   </div>
@@ -95,6 +111,9 @@ h1 {
   border: 2px solid transparent;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .feature-card::before {
@@ -129,16 +148,51 @@ h1 {
   z-index: 2;
   font-family: 'Cinzel', serif;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  min-height: 2.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .feature-card p {
   color: white;
-  font-size: 1.1rem;
+  font-size: 1.65rem;
   line-height: 1.6;
   position: relative;
   z-index: 2;
-  font-family: 'Cinzel', serif;
+  font-family: 'Great Vibes', cursive;
   opacity: 0.9;
+  margin: 0;
+  min-height: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.creator-section {
+  margin-top: 4rem;
+  text-align: center;
+  padding: 2rem;
+  background: var(--text-secondary-clr);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.creator-section h2 {
+  color: #30661e;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-family: 'Cinzel', serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.creator-story {
+  color: rgb(255, 255, 255);
+  font-size: 1.6rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: auto;
+  font-family: 'Great Vibes', cursive;
 }
 
 @media (max-width: 768px) {
