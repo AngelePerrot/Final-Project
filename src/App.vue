@@ -6,7 +6,9 @@ import Navbar from './components/Navbar.vue'
 import Header from './components/Header.vue'
 import BucketList from './components/BucketList.vue'
 import Footer from './components/Footer.vue'
-import { ref } from 'vue'
+import Home from './views/Home.vue'
+import {ref} from "vue";
+
 const router = useRouter()
 const userStore = useUserStore()
 onMounted(async () => {
@@ -42,7 +44,7 @@ const bucketList = ref([
   {
     id: 4,
     name: 'Decorate the Christmas Tree',
-    img: 'https://images.unsplash.com/photo-1545622783-b3e021430fee?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fE1hdGNoaW5nJTIwSG9saWRheSUyMFBhamFtYXN8ZW58MHx8MHx8fDI%3D',
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGZi7hlmL_P8kGEF67_s2yvTy0vEEpAhJuXg&s',
   },
   {
     id: 5,
@@ -77,7 +79,7 @@ const bucketList = ref([
   {
     id: 11,
     name: 'Donate to a non-profit',
-    img: 'https://images.unsplash.com/photo-1543893419-fcc585654853?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8a2lkcyUyMGNocmlzdG1hc3xlbnwwfHwwfHx8MA%3D%3D',
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9BNl6IaNAc37if5zi_JkweguQzvkACrEjxw&s',
   },
   {
     id: 12,
@@ -91,7 +93,7 @@ const bucketList = ref([
   },
   {
     id: 14,
-    name: 'Matching Holiday Pajamas',
+    name: 'Wear Matching Holiday Pajamas',
     img: 'https://media.istockphoto.com/id/1842842526/photo/two-sisters-girls-drink-cocoa-at-home-at-christmas-new-year-concept.jpg?s=612x612&w=0&k=20&c=FV__ujkA8ms9dwS3sTmM_u1WO7TuenK3_Dla5emDnVw=',
   },
   {
@@ -99,7 +101,7 @@ const bucketList = ref([
     name: 'Write a letter to Santa',
     img: 'https://media.istockphoto.com/id/109723098/photo/pictures-of-real-santa-clauss-list-hes-checking-twice.jpg?s=612x612&w=0&k=20&c=AQwLkHOUnFPvEqNd6llTOWS2TQd8UU4ehqmkDjYhK1s=',
   },
-])
+]);
 </script>
 <template>
   <div>
@@ -107,8 +109,8 @@ const bucketList = ref([
     <Navbar />
 
     <Header :brand="brand"></Header>
-    <BucketList :bucketList="bucketList"></BucketList>
-
+    <Home></Home>
+   <BucketList :bucketList="bucketList"></BucketList>
     <!-- Router View-->
     <main>
       <div>

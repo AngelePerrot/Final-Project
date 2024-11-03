@@ -4,10 +4,11 @@
 
 <template>
         <div class="list-description">
+            <li class="list-cards">
             <slot name="name"></slot>
             <br>
             <slot name="actions"></slot>
-            <li class="list-cards">
+            <br>
             <slot name="image"></slot>
         </li>
     </div>
@@ -25,6 +26,7 @@
     align-items: center;
     flex-wrap: non-wrap;
     width: 200px;
+    height: 300px;
     border: 1px solid #7b0a0a;
     border-radius: 10%;
     padding: 15px;
