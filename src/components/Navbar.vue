@@ -44,17 +44,10 @@ const scrollToTop = () => {
     <!--########################-->
     <!-- Authentication Section -->
     <!--######################-->
-    <div
-      class="btn-group d-flex gap-4"
-      role="group"
-      aria-label="Authentication buttons"
-    >
+    <div class="btn-group d-flex gap-4" role="group" aria-label="Authentication buttons">
       <!-- IF authenticated - SIGN OUT-->
-      <div
-        v-if="isLoggedIn"
-        class="nav-item d-flex align-items-center justify-content-center"
-      >
-        <button @click="signOut" class="nav-link-left btn text-center">
+      <div v-if="isLoggedIn" class="nav-item d-flex align-items-center justify-content-center">
+        <button @click="signOut" class="nav-link btn btn-link text-center">
           SIGN OUT
         </button>
       </div>
