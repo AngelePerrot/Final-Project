@@ -3,11 +3,12 @@
 </script>
 
 <template>
-    <img src="c:\Users\anjerko\Desktop\flat,750x,075,f-pad,750x1000,f8f8f8.jpg">
+    <div class="container"></div>
 </template>
 
 <style scoped>
-    .img{
+    .container{
+        background-image: url(src/assets/img/Logo.png);
         width:100%;
     }
 </style>

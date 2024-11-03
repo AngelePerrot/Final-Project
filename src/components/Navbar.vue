@@ -1,9 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
 import { RouterLink } from 'vue-router'
-<<<<<<< HEAD
-
-=======
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/Store/userStore'
@@ -28,7 +25,6 @@ const scrollToTop = () => {
     behavior: 'smooth',
   })
 }
->>>>>>> 7790d49b69ae8a37e4cc112c7a6b3c11fc782f0c
 </script>
 
 <template>
@@ -39,16 +35,10 @@ const scrollToTop = () => {
     </div>
 
     <div class="menu">
-<<<<<<< HEAD
-      <RouterLink to="/"> Home </RouterLink>|
-      <RouterLink to="/about"> About </RouterLink>|
-      <RouterLink to="/contact"> Contacts </RouterLink>|
-=======
       <RouterLink to="/"> Home </RouterLink>
       <RouterLink v-if="isLoggedIn" to="/UserView"> Application </RouterLink>
       <RouterLink v-else to="/about"> About </RouterLink>
       <RouterLink to="/contact"> Contacts </RouterLink>
->>>>>>> 7790d49b69ae8a37e4cc112c7a6b3c11fc782f0c
     </div>
 
     <!--########################-->
