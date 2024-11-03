@@ -28,7 +28,6 @@ const location = 'Rovaniemi, Finland'
     <Navbar />
 
     <Header :brand="brand"></Header>
-
     <!-- Router View-->
     <main>
       <div>

@@ -1,14 +1,14 @@
 <script setup>
+import ListLayout from './ListLayout.vue'
+
 defineProps({
   bucketList: Array,
 })
-
-import ListLayout from './ListLayout.vue'
 </script>
 
 <template>
-  <div class="list">
-    <h1>Christmas Bliss List</h1>
+  <div class="container">
+    <h1>Christmas Bucket List</h1>
     <ul>
       <ListLayout v-for="list in bucketList" :key="list.id">
         <template v-slot:image>
@@ -28,10 +28,12 @@ import ListLayout from './ListLayout.vue'
 </template>
 
 <style scope>
-.list {
+.container {
   background-color: #7b0a0a;
-  text-transform: none;
+  padding: 20px;
   color: white;
+  font-size: 1.5rem;
+  text-align: center;
 }
 
 h1 {
@@ -46,9 +48,25 @@ ul {
 }
 
 .listImg {
-  width: 140px;
-  height: 150px;
+  width: 160px;
+  height: 160px;
   border-radius: 10%;
   border: 2px solid #7b0a0a;
+}
+
+.listImg:hover {
+  border: 4px solid #7b0a0a;
+}
+
+.name {
+  padding: 2rem;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+button {
+  color: white;
 }
 </style>

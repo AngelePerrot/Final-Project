@@ -16,10 +16,12 @@
     "@supabase/supabase-js": "^2.45.6",
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
+    "canvas-snow": "^0.2.1",
     "bootstrap-icons": "^1.11.3",
     "bootstrap-vue": "^2.23.1",
     "pinia": "^2.2.4",
     "pinia-plugin-persist": "^1.0.0",
+    "vsnow": "^1.0.9",
     "vue": "^3.5.12",
     "vue-class-component": "^8.0.0-rc.1",
     "vue-router": "^4.4.5"

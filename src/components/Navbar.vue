@@ -147,6 +147,7 @@ const scrollToTop = () => {
   display: flex;
   justify-content: center;
   flex-grow: 1;
+  color: white;
 }
 
 .menu a {
