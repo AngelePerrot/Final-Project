@@ -10,15 +10,28 @@ const router = useRouter()
 const isLoggedIn = computed(() => userStore.isLoggedIn)
 
 const signOut = async () => {
-  await userStore.signOut()
-  router.push({ path: '/' })
+  try {
+    await userStore.signOut()
+    router.push({ path: '/' })
+  } catch (error) {
+    console.error('Sign out error:', error)
+    alert('Failed to sign out. Please try again.')
+  }
+}
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  })
 }
 </script>
 
 <template>
   <nav class="navbar">
-    <div class="logo-image">
-      <img src="@/assets/img/file.png" alt="Logo" />
+    <div class="logo-image" @click="scrollToTop" title="Back to top">
+      <img src="@/assets/img/Logo.png" alt="Logo" />
+      <div class="logo-shine"></div>
     </div>
 
     <div class="menu">
@@ -74,12 +87,60 @@ const signOut = async () => {
   font-family: 'Chicle', serif;
 }
 
-.logo-image img {
+.logo-image {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.3s ease;
   width: 75px;
   height: 75px;
-  border-radius: 50%;
+  margin: 8px 0 10px 10px;
+}
+
+.logo-image:hover {
+  transform: scale(1.1);
+}
+
+.logo-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20%;
   background-color: white;
-  margin: auto;
+  transition: filter 0.3s ease;
+  display: block;
+}
+
+.logo-image:hover img {
+  filter: brightness(1.2);
+}
+
+.logo-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  animation: shine 3s infinite;
+  pointer-events: none;
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  20% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
 }
 
 .menu {
@@ -89,7 +150,7 @@ const signOut = async () => {
 }
 
 .menu a {
-  margin: 0 0 0 150px;
+  margin: 0 0 0 70px;
   text-decoration: none;
   color: white;
 }

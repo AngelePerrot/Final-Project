@@ -30,7 +30,6 @@ const location = 'Rovaniemi, Finland'
   <div>
     <!-- Navbar block-->
     <Navbar />
-
     <!-- Router View-->
     <main>
       <div>
