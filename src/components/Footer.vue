@@ -88,7 +88,7 @@ onUnmounted(() => {
       <!-- Social Media Icons working after I added code in index.html -->
       <div class="social-icons">
         <a href="#"><i class="bi bi-facebook"></i></a>
-        <a href="#"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.canva.com/design/DAGVV9aLc1Q/H-vPEAJux9EalGF2rVthdQ/view?utm_content=DAGVV9aLc1Q&utm_campaign=designshare&utm_medium=link&utm_source=editor"><i class="bi bi-instagram"></i></a>
         <a href="#"><i class="bi bi-twitter"></i></a>
         <a href="#"><i class="bi bi-tiktok"></i></a>
       </div>
