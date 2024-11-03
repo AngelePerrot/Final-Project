@@ -6,6 +6,7 @@ import Navbar from './components/Navbar.vue'
 import Header from './components/Header.vue'
 import BucketList from './components/BucketList.vue'
 import Footer from './components/Footer.vue'
+import Home from './views/Home.vue'
 import {ref} from "vue";
 const router = useRouter()
 const userStore = useUserStore()
@@ -42,7 +43,7 @@ const bucketList = ref([
   {
     id: 4,
     name: 'Decorate the Christmas Tree',
-    img: 'https://images.unsplash.com/photo-1545622783-b3e021430fee?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fE1hdGNoaW5nJTIwSG9saWRheSUyMFBhamFtYXN8ZW58MHx8MHx8fDI%3D',
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGZi7hlmL_P8kGEF67_s2yvTy0vEEpAhJuXg&s',
   },
   {
     id: 5,
@@ -77,7 +78,7 @@ const bucketList = ref([
   {
     id: 11,
     name: 'Donate to a non-profit',
-    img: 'https://images.unsplash.com/photo-1543893419-fcc585654853?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8a2lkcyUyMGNocmlzdG1hc3xlbnwwfHwwfHx8MA%3D%3D',
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9BNl6IaNAc37if5zi_JkweguQzvkACrEjxw&s',
   },
   {
     id: 12,
@@ -106,7 +107,8 @@ const bucketList = ref([
     <!-- Navbar block-->
     <Navbar />
     <Header :brand="brand"></Header>
-    <BucketList :bucketList="bucketList"></BucketList>
+    <Home></Home>
+   <BucketList :bucketList="bucketList"></BucketList>
     
     <!-- Router View-->
     <main>

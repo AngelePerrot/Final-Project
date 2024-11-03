@@ -13,8 +13,10 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.45.6",
     "bootstrap": "^5.3.3",
+    "canvas-snow": "^0.2.1",
     "pinia": "^2.2.4",
     "pinia-plugin-persist": "^1.0.0",
+    "vsnow": "^1.0.9",
     "vue": "^3.5.12",
     "vue-router": "^4.4.5"
   },
