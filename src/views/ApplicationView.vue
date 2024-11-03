@@ -1,6 +1,9 @@
 <script setup>
 import Calendar from '@/components/Application/Calendar.vue'
 import { useUserStore } from '@/Store/userStore'
+import BucketList from '@/components/Application/BucketList.vue'
+import bucketList from '@/helpers/bucketList'
+import ShoppingList from '@/components/Application/ShoppingList.vue'
 
 const userStore = useUserStore()
 </script>
@@ -14,7 +17,9 @@ const userStore = useUserStore()
       }}</span>
     </div>
   </div>
+  <BucketList :bucketList="bucketList" />
   <Calendar />
+  <ShoppingList />
 </template>
 
 <style scoped>

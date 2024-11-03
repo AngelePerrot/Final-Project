@@ -1,10 +1,9 @@
 <script setup>
-
 defineProps({
-  bucketList: Array
-});
+  bucketList: Array,
+})
 
-import ListLayout from './ListLayout.vue';
+import ListLayout from './ListLayout.vue'
 </script>
 
 <template>
@@ -12,37 +11,34 @@ import ListLayout from './ListLayout.vue';
     <h1>Christmas Bliss List</h1>
     <ul>
       <ListLayout v-for="list in bucketList" :key="list.id">
+        <template v-slot:image>
+          <img :src="list.img" :alt="list.name" class="listImg" />
+        </template>
 
-<template v-slot:image>
-  <img :src="list.img" :alt="list.name" class="listImg">
-</template>
+        <template v-slot:name>
+          {{ list.name }}
+        </template>
 
-<template v-slot:name>
-  {{ list.name }}
-</template>
-
-<template v-slot: actions>
-  <button> Done </button>
-</template>
+        <template v-slot: actions>
+          <button>Done</button>
+        </template>
       </ListLayout>
     </ul>
-
   </div>
 </template>
 
 <style scope>
-
-.list{
+.list {
   background-color: #7b0a0a;
   text-transform: none;
   color: white;
 }
 
 h1 {
-    text-align: center;  
+  text-align: center;
 }
 
-ul{
+ul {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
@@ -55,5 +51,4 @@ ul{
   border-radius: 10%;
   border: 2px solid #7b0a0a;
 }
-
 </style>

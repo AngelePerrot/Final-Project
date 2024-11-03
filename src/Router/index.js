@@ -6,7 +6,7 @@ import SignIn from '@/components/Auth/SignIn.vue'
 import SignUp from '@/components/Auth/SignUp.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import Forgot from '@/components/Auth/Forgot.vue'
-import UserView from '@/views/UserView.vue'
+import UserView from '@/views/ApplicationView.vue'
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
