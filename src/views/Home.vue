@@ -41,6 +41,7 @@ onUnmounted(() => {
 </script>
 
 <template>
+<<<<<<< HEAD
 
 
 <div class="home">
@@ -75,6 +76,11 @@ onUnmounted(() => {
     <h1>{{ brand }}</h1>
     <h4>It's the most wonderful time of the year 🎁</h4>
 </div>
+=======
+  <div class="container">
+    <h3>This is the Home</h3>
+  </div>
+>>>>>>> 7790d49b69ae8a37e4cc112c7a6b3c11fc782f0c
 </template>
 
 <style scoped>
