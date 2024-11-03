@@ -10,13 +10,8 @@ const router = useRouter()
 const isLoggedIn = computed(() => userStore.isLoggedIn)
 
 const signOut = async () => {
-  try {
-    await userStore.signOut()
-    router.push({ path: '/' })
-    console.log('Signed out successfully')
-  } catch (error) {
-    console.log(error)
-  }
+  await userStore.signOut()
+  router.push({ path: '/' })
 }
 </script>
 
@@ -28,30 +23,24 @@ const signOut = async () => {
 
     <div class="menu">
       <RouterLink to="/"> Home </RouterLink>
-      <RouterLink to="/about"> About </RouterLink>
+      <RouterLink v-if="isLoggedIn" to="/UserView"> Application </RouterLink>
+      <RouterLink v-else to="/about"> About </RouterLink>
       <RouterLink to="/contact"> Contacts </RouterLink>
     </div>
 
     <!--########################-->
     <!-- Authentication Section -->
     <!--######################-->
-    <div
-      class="btn-group d-flex gap-4"
-      role="group"
-      aria-label="Authentication buttons"
-    >
+    <div class="btn-group d-flex gap-4" role="group" aria-label="Authentication buttons">
       <!-- IF authenticated - SIGN OUT-->
-      <div
-        v-if="isLoggedIn"
-        class="nav-item d-flex align-items-center justify-content-center"
-      >
+      <div v-if="isLoggedIn" class="nav-item d-flex align-items-center justify-content-center">
         <button @click="signOut" class="nav-link btn btn-link text-center">
           SIGN OUT
         </button>
       </div>
 
       <!-- Sign In-->
-      <div v-else class="d-flex gap-3">
+      <div v-else class="d-flex">
         <router-link to="/auth/signIn" class="nav-link-left btn text-center">
           Sign In
         </router-link>
@@ -75,6 +64,7 @@ const signOut = async () => {
   background-color: #e5d5bb;
   width: 100%;
   height: 100px;
+  font-family: 'Chicle', serif;
 }
 
 .logo-image img {
@@ -115,5 +105,16 @@ const signOut = async () => {
 
 .nav-link-right:hover {
   color: #7b0a0a;
+}
+
+.nav-item .text-center .p-3 {
+  font-size: 1.5rem;
+  color: #213c18;
+}
+
+.nav-item .text-center span {
+  font-size: 1.5rem;
+  color: #213c18;
+  font-weight: bold;
 }
 </style>

@@ -9,20 +9,25 @@ export const useUserStore = defineStore('user', {
   actions: {
     // Fetching user from database "Supabase" built in auth.user
     async fetchUser() {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser()
-      if (user) {
-        this.user = user
-        const { data: profile, error } = await supabase
-          .from('profiles')
-          .select()
-          .eq('id', this.user.id)
-          .single()
+      try {
+        const {
+          data: { user },
+        } = await supabase.auth.getUser()
+        if (user) {
+          this.user = user
+          // Fetch the profile data
+          const { data: profile, error } = await supabase
+            .from('profiles')
+            .select('*')
+            .eq('id', user.id)
+            .single()
 
-        if (error) throw error
-
-        if (profile) this.profile = profile
+          if (error) throw error
+          if (profile) this.profile = profile
+        }
+      } catch (error) {
+        console.error('Error fetching user:', error)
+        throw error
       }
     },
 
@@ -63,13 +68,14 @@ export const useUserStore = defineStore('user', {
 
     // Sign In
     async signIn(email, password) {
-      const { user, error } = await supabase.auth.signInWithPassword({
+      const { data, error } = await supabase.auth.signInWithPassword({
         email: email,
         password: password,
       })
+
       if (error) throw error
-      if (user) {
-        this.user = user
+      if (data.user) {
+        this.user = data.user
         const { data: profile } = await supabase
           .from('profiles')
           .select()
@@ -77,6 +83,7 @@ export const useUserStore = defineStore('user', {
           .single()
 
         if (profile) this.profile = profile
+        await this.fetchUser()
       }
     },
 
@@ -88,42 +95,10 @@ export const useUserStore = defineStore('user', {
       this.user = null
       this.profile = null
     },
-
-    // Password Reset: Send Reset Email
-    async passwordReset(email) {
-      try {
-        const production_url =
-          import.meta.env.VITE_PROD_URL ||
-          'http://localhost:5173/auth/password-update'
-        const { data, error } = await supabase.auth.api.resetPasswordForEmail(
-          email,
-          {
-            redirectTo: production_url, // Switching between production or development
-          },
-        )
-        if (error) throw error // Handle the error
-        return data // Return the data if needed
-      } catch (error) {
-        console.error('Password reset failed:', error.message)
-        throw error // Re-throw the error for handling in the component
-      }
-    },
-
-    // Password Reset: Update Password
-    async updatePassword(newPassword) {
-      try {
-        const { data, error } = await supabase.auth.updateUser({
-          password: newPassword,
-        })
-        if (error) throw error
-        return data // Return updated user data if needed
-      } catch (error) {
-        console.error('Update password failed:', error.message)
-        throw error
-      }
-    },
   },
   getters: {
+    displayName: state =>
+      state.profile?.full_name || state.user?.email || 'Guest',
     isLoggedIn: state => !!state.user,
   },
 })

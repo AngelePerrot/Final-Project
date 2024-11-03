@@ -196,7 +196,7 @@ h2 {
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 2rem;
-  font-family: 'Merry Christmas', sans-serif;
+  font-family: 'Cinzel', serif;
 }
 
 .form-control {
