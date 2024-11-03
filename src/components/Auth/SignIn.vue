@@ -14,7 +14,7 @@ const signIn = async () => {
   try {
     await userStore.signIn(email.value, password.value)
     await userStore.fetchUser()
-    redirect.push({ path: '/' })
+    redirect.push({ path: '/UserView' })
   } catch (error) {
     alert('Wrong password')
     throw error
