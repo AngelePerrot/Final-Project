@@ -18,7 +18,7 @@ const signOut = async () => {
 <template>
   <nav class="navbar">
     <div class="logo-image">
-      <img src="@/assets/img/file.png" alt="Logo" />
+      <img src="c:\Users\anjerko\Downloads\Santa.png" alt="Logo" />
     </div>
 
     <div class="menu">
