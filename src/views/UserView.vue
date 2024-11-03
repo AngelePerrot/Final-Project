@@ -1,5 +1,6 @@
 <script setup>
 import Calendar from '@/components/Application/Calendar.vue'
+import ShoppingList from '@/components/ShoppingList.vue';
 import { useUserStore } from '@/Store/userStore'
 
 const userStore = useUserStore()
@@ -15,6 +16,7 @@ const userStore = useUserStore()
     </div>
   </div>
   <Calendar />
+  <ShoppingList />
 </template>
 
 <style scoped>

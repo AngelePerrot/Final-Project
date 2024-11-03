@@ -41,14 +41,13 @@ onUnmounted(() => {
 </script>
 
 <template>
-<<<<<<< HEAD
 
 
 <div class="home">
     <div class="countdown">
       <h2>Christmas is coming</h2>
       <p></p>
-      <img src="c:\Users\anjerko\Downloads\360_F_463425858_s6qSgsZJx7JUYgbTtx252l73tjSK2ia1.jpg">
+      <img src="https://t4.ftcdn.net/jpg/03/93/75/89/240_F_393758978_8dLMYC2AFG1Dq1RXi0fUEoWZl7XHJNXI.jpg">
 
       <div class="container">
 
@@ -76,11 +75,6 @@ onUnmounted(() => {
     <h1>{{ brand }}</h1>
     <h4>It's the most wonderful time of the year 🎁</h4>
 </div>
-=======
-  <div class="container">
-    <h3>This is the Home</h3>
-  </div>
->>>>>>> 7790d49b69ae8a37e4cc112c7a6b3c11fc782f0c
 </template>
 
 <style scoped>
