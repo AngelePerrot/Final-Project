@@ -1,14 +1,12 @@
-<script setup>
-
-</script>
+<script setup></script>
 
 <template>
-    <div class="container"></div>
+  <div class="container"></div>
 </template>
 
 <style scoped>
-    .container{
-        background-image: url(src/assets/img/Logo.png);
-        width:100%;
-    }
+.container {
+  background-image: url();
+  width: 100%;
+}
 </style>

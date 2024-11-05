@@ -31,40 +31,38 @@ const scrollToTop = () => {
   <nav class="navbar">
     <div class="logo-image" @click="scrollToTop" title="Back to top">
       <img src="@/assets/img/Logo.png" alt="Logo" />
-      <div class="logo-shine"></div>
     </div>
 
     <div class="menu">
       <RouterLink to="/"> Home </RouterLink>
-      <RouterLink v-if="isLoggedIn" to="/UserView"> Application </RouterLink>
+      <RouterLink v-if="isLoggedIn" to="/UserView">
+        Christmas Planner
+      </RouterLink>
       <RouterLink v-else to="/about"> About </RouterLink>
       <RouterLink to="/contact"> Contacts </RouterLink>
     </div>
 
-    <!--########################-->
-    <!-- Authentication Section -->
-    <!--######################-->
     <div
       class="btn-group d-flex gap-4"
       role="group"
       aria-label="Authentication buttons"
     >
-      <!-- IF authenticated - SIGN OUT-->
       <div
         v-if="isLoggedIn"
         class="nav-item d-flex align-items-center justify-content-center"
       >
-        <button @click="signOut" class="nav-link btn btn-link text-center">
-          SIGN OUT
+        <router-link to="/profile" class="nav-link-left btn text-center">
+          Profile
+        </router-link>
+        <button @click="signOut" class="nav-link-right btn text-center">
+          Sign Out
         </button>
       </div>
 
-      <!-- Sign In-->
       <div v-else class="d-flex">
         <router-link to="/auth/signIn" class="nav-link-left btn text-center">
           Sign In
         </router-link>
-        <!-- Sign Up-->
         <router-link to="/auth/signUp" class="nav-link-right btn text-center">
           Sign Up
         </router-link>
@@ -81,7 +79,7 @@ const scrollToTop = () => {
   align-items: center;
   padding: 5px;
   position: relative;
-  background-color: #e5d5bb;
+  background-color: var(--template-primary-clr);
   width: 100%;
   height: 100px;
   font-family: 'Chicle', serif;
@@ -114,32 +112,34 @@ const scrollToTop = () => {
   filter: brightness(1.2);
 }
 
-.logo-shine {
+.logo-image::after {
+  content: '';
   position: absolute;
   top: 0;
-  left: -100%;
-  width: 50%;
+  left: 0;
+  width: 100%;
   height: 100%;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.3) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: skewX(-25deg);
-  animation: shine 3s infinite;
+  background: radial-gradient(2px 2px at 20% 20%, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 40% 40%, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 60% 60%, #fff, rgba(0, 0, 0, 0));
+  background-size: 100px 100px;
+  animation: snow 4s linear infinite;
   pointer-events: none;
+  border-radius: 20%;
 }
 
-@keyframes shine {
+@keyframes snow {
   0% {
-    left: -100%;
-  }
-  20% {
-    left: 100%;
+    background-position:
+      0px 0px,
+      0px 0px,
+      0px 0px;
   }
   100% {
-    left: 100%;
+    background-position:
+      50px 50px,
+      25px 50px,
+      -25px 50px;
   }
 }
 
@@ -160,30 +160,89 @@ const scrollToTop = () => {
   display: flex;
   justify-content: flex-end;
   margin-right: 15px;
+  gap: 10px;
+}
+
+.nav-item {
+  gap: 10px;
+}
+
+.d-flex {
+  gap: 10px;
 }
 
 .nav-link-left,
 .nav-link-right {
-  font-size: 1.5rem;
-  color: #213c18;
-}
-
-.nav-link-left:hover {
-  color: #7b0a0a;
-}
-
-.nav-link-right:hover {
-  color: #7b0a0a;
-}
-
-.nav-item .text-center .p-3 {
-  font-size: 1.5rem;
-  color: #213c18;
-}
-
-.nav-item .text-center span {
-  font-size: 1.5rem;
-  color: #213c18;
+  padding: 0.5rem 1rem;
+  color: white;
+  text-decoration: none;
   font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link-left {
+  background-color: #880c0c;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-link-right {
+  background-color: #880c0c;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.nav-link-left:hover,
+.nav-link-right:hover {
+  background-color: #7b0a0a;
+}
+
+.btn {
+  border: none;
+  font-size: 1rem;
+}
+
+.auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100vw;
+  background-image: url('/src/assets/img/Auth.jpg');
+  background-position: 80% center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  margin: 0;
+}
+
+.form-card {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.form-title {
+  color: #213c18;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  font-family: 'Great Vibes', cursive;
+}
+
+.form-input {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.2rem 0 1rem 0;
+  border: 1px solid #213c18;
+  border-radius: 8px;
+  font-size: 1rem;
 }
 </style>

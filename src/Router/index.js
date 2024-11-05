@@ -8,7 +8,7 @@ import SignUp from '@/components/Auth/SignUp.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import Forgot from '@/components/Auth/Forgot.vue'
 import UserView from '@/views/ApplicationView.vue'
-
+import Profile from '@/views/Profile.vue'
 const routes = [
   { path: '/', name: 'Home', component: Home },
   {
@@ -33,14 +33,20 @@ const routes = [
   },
   { path: '/About', name: 'About', component: About },
   { path: '/Contact', name: 'Contact', component: Contact },
-  { path: "/:pathMatch(.*)*" , name: 'NotFound' , component: NotFound },
+  { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
   { path: '/forgot', name: 'Forgot', component: Forgot },
   { path: '/UserView', name: 'UserView', component: UserView },
-];
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile,
+    meta: { requiresAuth: true },
+  },
+]
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
 })
 
-export default router;
+export default router
