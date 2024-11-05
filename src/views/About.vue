@@ -6,32 +6,6 @@
         Making your holiday season magical, one task at a time
       </p>
 
-      <div class="features-grid">
-        <div class="feature-card">
-          <span class="feature-icon">🎄</span>
-          <h3>Plan Events</h3>
-          <p>Organize your holiday gatherings and celebrations</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-icon">🎁</span>
-          <h3>Gift Lists</h3>
-          <p>Keep track of your Christmas shopping</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-icon">📅</span>
-          <h3>Calendar</h3>
-          <p>Never miss important holiday dates</p>
-        </div>
-        <div class="feature-card">
-          <span class="feature-icon">✨</span>
-          <h3>Bucket List</h3>
-          <p>
-            A selection of holiday traditions and activities to try with family
-            and friends
-          </p>
-        </div>
-      </div>
-
       <div class="creator-section">
         <h2>Meet the Creators</h2>
         <p class="creator-story">
@@ -93,80 +67,6 @@ h1 {
   font-size: 1.5rem;
   margin-bottom: 3rem;
   font-family: 'Cinzel', serif;
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  padding: 20px;
-}
-
-.feature-card {
-  background: var(--primary-clr);
-  padding: 2.5rem;
-  border-radius: 12px;
-  box-shadow: -8px 8px 24px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.feature-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), transparent);
-  z-index: 1;
-}
-
-.feature-card:hover {
-  transform: translateY(-10px);
-  border-color: var(--text-secondary-clr);
-}
-
-.feature-icon {
-  font-size: 3.5rem;
-  margin-bottom: 1.5rem;
-  display: block;
-  position: relative;
-  z-index: 2;
-}
-
-.feature-card h3 {
-  color: white;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  position: relative;
-  z-index: 2;
-  font-family: 'Cinzel', serif;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  min-height: 2.5em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.feature-card p {
-  color: white;
-  font-size: 1.65rem;
-  line-height: 1.6;
-  position: relative;
-  z-index: 2;
-  font-family: 'Great Vibes', cursive;
-  opacity: 0.9;
-  margin: 0;
-  min-height: 3em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .creator-section {

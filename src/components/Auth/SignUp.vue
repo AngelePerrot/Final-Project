@@ -139,6 +139,4 @@ const signup = async () => {
 .submit-btn:hover {
   background-color: #7b0a0a;
 }
-
-/* Decorations for festive feel */
 </style>

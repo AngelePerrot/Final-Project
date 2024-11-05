@@ -28,10 +28,12 @@ h1 {
   text-align: center;
   padding: 50px 0;
   margin: 0;
+  font-family: 'Cinzel', serif;
 }
 
 h4 {
   color: white;
   text-align: center;
+  font-family: Cin;
 }
 </style>

@@ -9,7 +9,6 @@ const error = ref(null)
 const message = ref('')
 
 const profileForm = ref({
-  username: '',
   full_name: '',
   password: '',
 })
@@ -17,7 +16,6 @@ const profileForm = ref({
 onMounted(async () => {
   if (userStore.profile) {
     profileForm.value = {
-      username: userStore.profile.username || '',
       full_name: userStore.profile.full_name || '',
       password: '',
     }
@@ -41,14 +39,13 @@ async function updateUserProfile() {
 
     const updates = {
       id: userStore.user.id,
-      username: profileForm.value.username,
       full_name: profileForm.value.full_name,
       updated_at: new Date().toISOString(),
     }
 
     await userStore.updateProfile(updates)
     message.value = 'Profile updated successfully!'
-    profileForm.value.password = '' // Clear password field after successful update
+    profileForm.value.password = ''
   } catch (err) {
     error.value = err.message
   } finally {
@@ -70,17 +67,6 @@ async function updateUserProfile() {
             v-model="profileForm.full_name"
             class="form-input"
             placeholder="Enter your full name"
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            v-model="profileForm.username"
-            class="form-input"
-            placeholder="Enter your username"
           />
         </div>
 
