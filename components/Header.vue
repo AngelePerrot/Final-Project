@@ -1,7 +1,7 @@
 <script setup>
 defineProps({
     brand: String
-})
+});
 </script>
 
 <template>
@@ -13,18 +13,25 @@ defineProps({
 <style scoped>
 
 .header {
-    background-image: url("https://t4.ftcdn.net/jpg/03/93/75/89/240_F_393758978_8dLMYC2AFG1Dq1RXi0fUEoWZl7XHJNXI.jpg");
-    background-repeat: no-repeat;
+   
+    background-image: url("src/assets/img/240_F_393758978_8dLMYC2AFG1Dq1RXi0fUEoWZl7XHJNXI.jpg");
+    background-repeat: no-repeat; 
     background-size: cover;
-    
 }
+    
 
 h1 {
     color: white;
     font-size: 60px;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: "Berkshire+Swash&family";
     text-align: center;
-    padding: 140px;
+    padding: 90px;
+}
+
+h4 {
+    color: white;
+    text-align: center;
+    
 }
 
 </style>
