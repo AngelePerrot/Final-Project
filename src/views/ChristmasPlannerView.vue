@@ -1,9 +1,9 @@
 <script setup>
 import { useUserStore } from '@/Store/userStore'
 import bucketList from '@/helpers/bucketList'
-import Calendar from '@/components/ChristmasPlanner/Calendar.vue'
-import BucketList from '@/components/ChristmasPlanner/BucketList.vue'
-import ShoppingList from '@/components/ChristmasPlanner/ShoppingList.vue'
+import Calendar from '@/components/christmasPlanner/Calendar.vue'
+import BucketList from '@/components/christmasPlanner/BucketList.vue'
+import ShoppingList from '@/components/christmasPlanner/ShoppingList.vue'
 
 const userStore = useUserStore()
 </script>
