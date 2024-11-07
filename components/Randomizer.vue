@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref } from 'vue'
 
 const bucketList = ref([
   {
@@ -77,54 +77,55 @@ const bucketList = ref([
     name: 'Write a letter to Santa',
     img: 'https://media.istockphoto.com/id/109723098/photo/pictures-of-real-santa-clauss-list-hes-checking-twice.jpg?s=612x612&w=0&k=20&c=AQwLkHOUnFPvEqNd6llTOWS2TQd8UU4ehqmkDjYhK1s=',
   },
-]);
+])
 
-const selectedItem = ref(null);
-const isSpinning = ref(false);
-let rouletteInterval = null;
-
+const selectedItem = ref(null)
+const isSpinning = ref(false)
+let rouletteInterval = null
 
 function startRoulette() {
-  clearInterval(rouletteInterval); 
-  isSpinning.value = true; 
+  clearInterval(rouletteInterval)
+  isSpinning.value = true
 
-  
   rouletteInterval = setInterval(() => {
-    const randomIndex = Math.floor(Math.random() * bucketList.value.length);
-    selectedItem.value = bucketList.value[randomIndex];
-  }, 100);
-
+    const randomIndex = Math.floor(Math.random() * bucketList.value.length)
+    selectedItem.value = bucketList.value[randomIndex]
+  }, 100)
 
   setTimeout(() => {
-    clearInterval(rouletteInterval);
-    isSpinning.value = false; 
-  }, 3000);
-};
+    clearInterval(rouletteInterval)
+    isSpinning.value = false
+  }, 3000)
+}
 </script>
 
 <template>
-    <div class="roulette-container">
-      <h2>Santa's Activity Roulette! 🎅</h2>
-      
-      <!-- Display Selected Image -->
-      <div v-if="selectedItem" class="selected-item">
-        <img :src="selectedItem.img" :alt="selectedItem.name" class="activity-image" />
-        <p>{{ selectedItem.name }}</p>
-      </div>
-  
-      <!-- Roulette Button with Animation -->
-      <button @click="startRoulette" :class="{ spinning: isSpinning }">Christmas Magic Spin</button>
+  <div class="roulette-container">
+    <h2>Santa's Activity Roulette! 🎅</h2>
+
+    <!-- Display Selected Image -->
+    <div v-if="selectedItem" class="selected-item">
+      <img
+        :src="selectedItem.img"
+        :alt="selectedItem.name"
+        class="activity-image"
+      />
+      <p>{{ selectedItem.name }}</p>
     </div>
-  </template>
-  
+
+    <!-- Roulette Button with Animation -->
+    <button @click="startRoulette" :class="{ spinning: isSpinning }">
+      Christmas Magic Spin
+    </button>
+  </div>
+</template>
 
 <style scoped>
-
 .roulette-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Merienda";
+  font-family: 'Merienda';
   padding: 30px;
   background-color: #baa58c;
 }
@@ -179,8 +180,8 @@ p {
 }
 
 h2 {
-    font-family: "Merienda";
-    color: white;
-    padding:
+  font-family: 'Merienda';
+  color: white;
+  padding:;
 }
 </style>
