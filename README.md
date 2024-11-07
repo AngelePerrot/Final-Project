@@ -1,4 +1,4 @@
-# Christmas To-Do App
+# Christmas To-Do App - IronHackSchool - Add
 
 ## Table of Contents
 
