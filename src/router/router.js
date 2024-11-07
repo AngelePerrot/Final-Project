@@ -1,14 +1,18 @@
-import Home from '@/views/Home.vue'
-import About from '@/views/About.vue'
-import Contact from '@/views/Contact.vue'
-import NotFound from '@/views/NotFound.vue'
-import Auth from '@/components/Auth/Auth.vue'
-import SignIn from '@/components/Auth/SignIn.vue'
-import SignUp from '@/components/Auth/SignUp.vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import Forgot from '@/components/Auth/Forgot.vue'
-import UserView from '@/views/ApplicationView.vue'
-import Profile from '@/views/Profile.vue'
+
+import Home from '@/views/HomeView.vue'
+import About from '@/views/AboutView.vue'
+import Contact from '@/views/ContactView.vue'
+import NotFound from '@/views/NotFoundView.vue'
+
+import Auth from '@/components/Authentication/Auth.vue'
+import SignIn from '@/components/Authentication/SignIn.vue'
+import SignUp from '@/components/Authentication/SignUp.vue'
+import Forgot from '@/components/Authentication/Forgot.vue'
+
+import ChristmasPlanner from '@/views/ChristmasPlannerView.vue'
+import Profile from '@/views/ProfileView.vue'
+
 const routes = [
   { path: '/', name: 'Home', component: Home },
   {
@@ -35,7 +39,11 @@ const routes = [
   { path: '/Contact', name: 'Contact', component: Contact },
   { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
   { path: '/forgot', name: 'Forgot', component: Forgot },
-  { path: '/UserView', name: 'UserView', component: UserView },
+  {
+    path: '/ChristmasPlanner',
+    name: 'ChristmasPlanner',
+    component: ChristmasPlanner,
+  },
   {
     path: '/profile',
     name: 'Profile',

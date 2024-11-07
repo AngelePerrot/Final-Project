@@ -1,10 +1,10 @@
 <script setup>
 import { onMounted, computed } from 'vue'
 import { useRouter } from 'vue-router'
-import { useUserStore } from '@/Store/userStore'
-import Navbar from './components/Navbar.vue'
-import Header from './components/Header.vue'
-import Footer from './components/Footer.vue'
+import { useUserStore } from '@/store/userStore'
+import Navbar from '@/components/Navbar.vue'
+import Header from '@/components/Header.vue'
+import Footer from '@/components/Footer.vue'
 
 const router = useRouter()
 const userStore = useUserStore()

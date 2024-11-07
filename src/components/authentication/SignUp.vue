@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { useUserStore } from '@/Store/userStore'
+import { useUserStore } from '@/store/userStore'
 
 const redirect = useRouter()
 const email = ref('')
@@ -87,11 +87,13 @@ const signup = async () => {
   justify-content: center;
   min-height: 100vh;
   width: 100vw;
-  background: no-repeat center center fixed;
-  background-image: url('/src/assets/img/C-tree.jpg');
+  background-image: url('/src/assets/img/Auth.jpg');
+  background-position: 80% center;
+  background-attachment: fixed;
   background-size: cover;
+  background-repeat: no-repeat;
   overflow: hidden;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .form-card {
@@ -137,6 +139,4 @@ const signup = async () => {
 .submit-btn:hover {
   background-color: #7b0a0a;
 }
-
-/* Decorations for festive feel */
 </style>

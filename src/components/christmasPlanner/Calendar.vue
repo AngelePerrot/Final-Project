@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useTaskStore } from '@/Store/taskStore'
+import { useTaskStore } from '@/store/taskStore'
 
 defineOptions({
   name: 'TaskCalendar',

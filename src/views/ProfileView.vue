@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useUserStore } from '@/Store/userStore'
+import { useUserStore } from '@/store/userStore'
 import { supabase } from '@/lib/supabaseClient'
 
 const userStore = useUserStore()

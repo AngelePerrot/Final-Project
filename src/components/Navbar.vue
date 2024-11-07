@@ -3,7 +3,7 @@
 import { RouterLink } from 'vue-router'
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
-import { useUserStore } from '@/Store/userStore'
+import { useUserStore } from '@/store/userStore'
 
 const userStore = useUserStore()
 const router = useRouter()
@@ -35,7 +35,7 @@ const scrollToTop = () => {
 
     <div class="menu">
       <RouterLink to="/"> Home </RouterLink>
-      <RouterLink v-if="isLoggedIn" to="/UserView">
+      <RouterLink v-if="isLoggedIn" to="/ChristmasPlanner">
         Christmas Planner
       </RouterLink>
       <RouterLink v-else to="/about"> About </RouterLink>
