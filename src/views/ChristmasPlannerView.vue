@@ -1,5 +1,5 @@
 <script setup>
-import { useUserStore } from '@/store/userStore'
+import { useUserStore } from '@/Store/userStore'
 import bucketList from '@/helpers/bucketList'
 import Calendar from '@/components/ChristmasPlanner/Calendar.vue'
 import BucketList from '@/components/ChristmasPlanner/BucketList.vue'

@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { useUserStore } from '@/store/userStore'
+import { useUserStore } from '@/Store/userStore'
 
 const redirect = useRouter()
 const email = ref('')

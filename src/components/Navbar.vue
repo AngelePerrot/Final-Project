@@ -3,7 +3,7 @@
 import { RouterLink } from 'vue-router'
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
-import { useUserStore } from '@/store/userStore'
+import { useUserStore } from '@/Store/userStore'
 
 const userStore = useUserStore()
 const router = useRouter()
