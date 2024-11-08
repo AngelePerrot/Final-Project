@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
 import { RouterLink } from 'vue-router'
 import { ref, onMounted, onUnmounted } from 'vue'
@@ -154,3 +155,56 @@ onUnmounted(() => {
   font-weight: bold;
 }
 
+.label {
+  font-size: 1rem;
+  margin-top: 5px;
+  opacity: 0.7;
+}
+
+.logo {
+  width: 80px; /* Adjust Size */
+  border-radius: 50%;
+  background-color: #e5d5bb;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-nav a {
+  color: #e5d5bb;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.footer-nav a:hover {
+  color: #baa58c;
+  /* Color for when you hover over the text */
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.social-icons a {
+  color: #e5d5bb;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+hr {
+  border: none;
+  border-top: 0.5px solid #e5d5bb;
+  /* Style for horizontal line */
+  opacity: 0.5;
+  /* Makes line more subtle */
+  margin: 20px 0;
+}
+
+.copyright {
+  font-size: 14px;
+  color: #e5d5bb;
+}
+</style>
