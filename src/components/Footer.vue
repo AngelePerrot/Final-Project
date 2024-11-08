@@ -19,10 +19,11 @@ const countdown = ref({
 
 function calculateCountdown() {
   const now = new Date()
-  const christmas = new Date(now.getFullYear(), 11, 25) 
+  const christmas = new Date(now.getFullYear(), 11, 25) // Month is 0-indexed, so 11 is December
 
   if (now > christmas) {
-    christmas.setFullYear(christmas.getFullYear() + 1) 
+    christmas.setFullYear(christmas.getFullYear() + 1) // Move to next year's Christmas if past Dec 25
+  }
 
   const timeDifference = christmas - now
 
@@ -35,12 +36,12 @@ function calculateCountdown() {
 let countdownInterval
 
 onMounted(() => {
-  calculateCountdown() 
-  countdownInterval = setInterval(calculateCountdown, 1000) 
+  calculateCountdown() // Initial calculation
+  countdownInterval = setInterval(calculateCountdown, 1000) // Update every second
 })
 
 onUnmounted(() => {
-  clearInterval(countdownInterval) 
+  clearInterval(countdownInterval) // Clean up interval on component unmount
 })
 </script>
 
@@ -102,7 +103,9 @@ onUnmounted(() => {
 <style scoped>
 .footer {
   background-color: #213c18;
+  /* Dark background for footer */
   color: #e5d5bb;
+  /* Light text color */
   padding: 20px;
   text-align: center;
 }
@@ -151,96 +154,3 @@ onUnmounted(() => {
   font-weight: bold;
 }
 
-.label {
-  font-size: 1rem;
-  margin-top: 5px;
-  opacity: 0.7;
-}
-
-.logo {
-  position: relative;
-  width: 75px;
-  height: 75px;
-  border-radius: 20%;
-  background-color: white;
-  transition: filter 0.3s ease;
-  cursor: pointer;
-  overflow: hidden;
-}
-
-.logo:hover {
-  filter: brightness(1.2);
-  transform: scale(1.1);
-}
-
-.logo::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(2px 2px at 20% 20%, #fff, rgba(0, 0, 0, 0)),
-    radial-gradient(2px 2px at 40% 40%, #fff, rgba(0, 0, 0, 0)),
-    radial-gradient(2px 2px at 60% 60%, #fff, rgba(0, 0, 0, 0));
-  background-size: 100px 100px;
-  animation: snow 4s linear infinite;
-  pointer-events: none;
-  border-radius: 20%;
-}
-
-@keyframes snow {
-  0% {
-    background-position:
-      0px 0px,
-      0px 0px,
-      0px 0px;
-  }
-  100% {
-    background-position:
-      50px 50px,
-      25px 50px,
-      -25px 50px;
-  }
-}
-
-.footer-nav {
-  display: flex;
-  gap: 20px;
-}
-
-.footer-nav a {
-  color: #e5d5bb;
-  text-decoration: none;
-  font-size: 16px;
-}
-
-.footer-nav a:hover {
-  color: #baa58c;
-}
-
-.social-icons {
-  display: flex;
-  gap: 10px;
-}
-
-.social-icons a {
-  color: #e5d5bb;
-  font-size: 18px;
-  text-decoration: none;
-}
-
-hr {
-  border: none;
-  border-top: 0.5px solid #e5d5bb;
-  /* Style for horizontal line */
-  opacity: 0.5;
-  /* Makes line more subtle */
-  margin: 20px 0;
-}
-
-.copyright {
-  font-size: 14px;
-  color: #e5d5bb;
-}
-</style>
