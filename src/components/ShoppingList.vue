@@ -178,83 +178,120 @@ function togglePage() {
 </template>
 
 <style scoped>
-/* General styles for the shopping list layout */
 .shopping-list {
     background-image: url('/src/assets/img/ShoppingListBcg.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 50vh; /* Full viewport size would be 100vh or could try with pixels */
+    min-height: 500px;
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    padding: 20px;
 }
 
 /* Style for the introduction and actual shopping list */
 .content {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    width: 50%;
+    gap: 20px;
+    width: 90%; 
+    max-width: 800px;
     margin-top: 20px;
 }
 
-.intro,
-.lists {
-    width: 45%;
+.intro {
+    position: relative;
+    background-color: rgba(247, 247, 247, 0.85);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 350px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Gradient line styling at the top of the box */
+.intro::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #30661e, #5c9c4a, #30661e);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+
+.intro, .lists {
+    width: 100%; 
+    max-width: 350px;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
 .intro h3 {
     color: #7b0a0a;
-    text-align: center;
+    font-size: 1.5em;
 }
 
 .intro p {
     color: #213c18;
-    font-size: 16px;
-    text-align: justify;
+    font-size: 1em;
+    line-height: 1.4;
 }
 
 /* Style for the shopping list box */
 .list-box {
     background-image: url('/src/assets/img/PaperBcg.jpg');
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
 
 .list-box h2 {
     color: #7b0a0a;
-    font-size: 20px;
+    font-size: 1.4em;
+    text-align: center;
 }
 
-/* Scrollable list with maximum height and scrollbar */
 .scrollable-list {
-    max-height: 200px; /* Adjust height as needed */
-    overflow-y: auto; /* Enables vertical scrolling */
+    max-height: 200px; 
+    overflow-y: auto; 
+}
+
+.scrollable-list::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 4px;
+}
+
+.scrollable-list::-webkit-scrollbar-thumb {
+    background-color: #7b0a0a;
+    border-radius: 4px;
+    border: 1px solid #fff;
+}
+
+.scrollable-list::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1); 
 }
 
 .scrollable-list ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
-}
-
-/* Style for the scrollbar (only for Chrome and Safari) */
-.scrollable-list::-webkit-scrollbar {
-    width: 6px; /* Makes the scrollbar thinner */
-}
-
-/* The draggable part of the scrollbar */
-.scrollable-list::-webkit-scrollbar-thumb {
-    background-color: #7b0a0a;
-    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
 }
 
 li {
     display: flex;
     align-items: center;
-    margin: 10px 0;
+    margin: 8px 0;
 }
 
 .bought .item-name {
@@ -263,11 +300,10 @@ li {
 }
 
 .quantity-display {
-    font-size: 14px;
+    font-size: 1em;
     color: #668c6f;
     border-bottom: 1px solid #7b0a0a;
     margin-right: 10px;
-    padding-bottom: 2px;
     min-width: 20px;
     text-align: center;
 }
@@ -280,36 +316,34 @@ li {
 .action-icons {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
 }
 
-/* Style for add buttons */
-.icon-button {
+/* Style for action buttons */
+.icon-button, .remove-button {
     background: none;
     border: none;
-    color: #668c6f;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 1.2em;
+}
+
+.icon-button {
+    color: #668c6f;
 }
 
 .icon-button:hover {
     color: #213c18;
 }
 
-/* Style for remove buttons */
 .remove-button {
-    background: none;
-    border: none;
     color: #7b0a0a;
-    cursor: pointer;
-    font-size: 18px;
 }
 
 .remove-button:hover {
     color: #9e1212;
 }
 
-/* Style for adding new products */
+/* Input for adding items */
 .add-item-container {
     display: flex;
     align-items: center;
@@ -317,20 +351,22 @@ li {
 }
 
 .add-item-input {
-    padding: 5px;
-    font-size: 14px;
+    padding: 8px;
+    font-size: 1em;
     color: #213c18;
     width: 70%;
     margin-right: 10px;
+    flex-grow: 1;
 }
 
-/* Style to change from Food list to Drinks list */
+/* Toggle page button */
 .toggle-page {
-    margin-top: 20px;
+    margin-top: 15px;
     background-color: #7b0a0a;
     color: white;
     border: none;
-    padding: 10px;
+    padding: 8px;
+    font-size: 1em;
     cursor: pointer;
     border-radius: 5px;
 }
@@ -339,9 +375,67 @@ li {
     background-color: #9e1212;
 }
 
-/* Style to center the toggle page button */
+/* Center toggle page button */
 .toggle-page-container {
     display: flex;
     justify-content: center;
+}
+
+
+/* For Extra Small Screens (max 480px) */
+@media (max-width: 480px) {
+    .shopping-list {
+        padding: 15px;
+    }
+
+    .intro h3 {
+        font-size: 1.2em;
+    }
+
+    .intro p {
+        font-size: 0.9em;
+    }
+}
+
+/* For Small Screens (481px to 640px) */
+@media (max-width: 640px) {
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .intro p {
+        font-size: 0.95em;
+    }
+
+    .add-item-input {
+        width: 200px;
+    }
+}
+
+/* For Medium Screens (641px to 800px) */
+@media (max-width: 800px) {
+    .content {
+        max-width: 500px;
+    }
+
+    .intro p {
+        font-size: 1em;
+    }
+
+    .add-item-input {
+        width: 250px;
+    }
+}
+
+/* For Large Screens (801px to 1024px) */
+@media (max-width: 1024px) {
+    .content {
+        max-width: 700px;
+    }
+
+    .intro p {
+        font-size: 1.1em;
+    }
 }
 </style>

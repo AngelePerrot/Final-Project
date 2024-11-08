@@ -1,5 +1,5 @@
 import Home from '@/views/Home.vue'
-import About from '@/views/About.vue'
+import About from '@/views/AboutUs.vue'
 import Contact from '@/views/Contact.vue'
 import NotFound from '@/views/NotFound.vue'
 import Auth from '@/components/Auth/Auth.vue'

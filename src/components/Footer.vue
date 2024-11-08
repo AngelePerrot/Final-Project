@@ -87,10 +87,10 @@ onUnmounted(() => {
 
       <!-- Social Media Icons working after I added code in index.html -->
       <div class="social-icons">
-        <a href="#"><i class="bi bi-facebook"></i></a>
-        <a href="https://www.canva.com/design/DAGVV9aLc1Q/H-vPEAJux9EalGF2rVthdQ/view?utm_content=DAGVV9aLc1Q&utm_campaign=designshare&utm_medium=link&utm_source=editor"><i class="bi bi-instagram"></i></a>
-        <a href="#"><i class="bi bi-twitter"></i></a>
-        <a href="#"><i class="bi bi-tiktok"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61568645872379"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/santas_secret_24/"><i class="bi bi-instagram"></i></a>
+        <a href="https://x.com/SChecklist60172"><i class="bi bi-twitter"></i></a>
+        <a href="https://www.tiktok.com/@santas_secret_24"><i class="bi bi-tiktok"></i></a>
       </div>
     </div>
 
@@ -103,10 +103,8 @@ onUnmounted(() => {
 
 <style scoped>
 .footer {
-  background-color: #213c18;
-  /* Dark background for footer */
-  color: #e5d5bb;
-  /* Light text color */
+  background-color: #213c18; /* Dark background for footer */
+  color: #e5d5bb; /* Light text color */
   padding: 20px;
   text-align: center;
 }
@@ -179,8 +177,7 @@ onUnmounted(() => {
 }
 
 .footer-nav a:hover {
-  color: #baa58c;
-  /* Color for when you hover over the text */
+  color: #baa58c; /* Color for when you hover over the text */
 }
 
 .social-icons {
@@ -196,15 +193,128 @@ onUnmounted(() => {
 
 hr {
   border: none;
-  border-top: 0.5px solid #e5d5bb;
-  /* Style for horizontal line */
-  opacity: 0.5;
-  /* Makes line more subtle */
+  border-top: 0.5px solid #e5d5bb; /* Style for horizontal line */
+  opacity: 0.5; /* Makes line more subtle */
   margin: 20px 0;
 }
 
 .copyright {
   font-size: 14px;
   color: #e5d5bb;
+}
+
+/* Large Screens (Desktops) */
+@media (max-width: 1200px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .logo {
+    width: 70px;
+  }
+
+  .footer-nav a {
+    font-size: 15px;
+  }
+}
+
+/* Medium Screens (Tablets) */
+@media (max-width: 992px) {
+  .footer {
+    padding: 15px;
+  }
+
+  .container {
+    gap: 15px;
+  }
+
+  .time-unit {
+    width: 70px;
+  }
+
+  .footer-nav a {
+    font-size: 14px;
+  }
+
+  .social-icons a {
+    font-size: 16px;
+  }
+}
+
+/* Small Screens (Mobile Devices) */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .logo {
+    width: 60px;
+  }
+
+  .footer-nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .container {
+    gap: 10px;
+  }
+
+  .time-unit {
+    width: 60px;
+    padding: 10px;
+  }
+
+  .number {
+    font-size: 2rem;
+  }
+
+  .label {
+    font-size: 0.9rem;
+  }
+
+  .social-icons {
+    gap: 8px;
+  }
+}
+
+/* Extra Small Screens (Small mobile devices) */
+@media (max-width: 576px) {
+  .footer-content {
+    gap: 10px;
+  }
+
+  .logo {
+    width: 50px;
+  }
+
+  .container {
+    gap: 5px;
+  }
+
+  .time-unit {
+    width: 50px;
+    padding: 8px;
+  }
+
+  .number {
+    font-size: 1.8rem;
+  }
+
+  .label {
+    font-size: 0.8rem;
+  }
+
+  .footer-nav a {
+    font-size: 12px;
+  }
+
+  .social-icons a {
+    font-size: 14px;
+  }
 }
 </style>
