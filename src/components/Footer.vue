@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
 import { RouterLink } from 'vue-router'
 import { ref, onMounted, onUnmounted } from 'vue'
@@ -20,11 +19,10 @@ const countdown = ref({
 
 function calculateCountdown() {
   const now = new Date()
-  const christmas = new Date(now.getFullYear(), 11, 25) // Month is 0-indexed, so 11 is December
+  const christmas = new Date(now.getFullYear(), 11, 25) 
 
   if (now > christmas) {
-    christmas.setFullYear(christmas.getFullYear() + 1) // Move to next year's Christmas if past Dec 25
-  }
+    christmas.setFullYear(christmas.getFullYear() + 1) 
 
   const timeDifference = christmas - now
 
@@ -37,12 +35,12 @@ function calculateCountdown() {
 let countdownInterval
 
 onMounted(() => {
-  calculateCountdown() // Initial calculation
-  countdownInterval = setInterval(calculateCountdown, 1000) // Update every second
+  calculateCountdown() 
+  countdownInterval = setInterval(calculateCountdown, 1000) 
 })
 
 onUnmounted(() => {
-  clearInterval(countdownInterval) // Clean up interval on component unmount
+  clearInterval(countdownInterval) 
 })
 </script>
 
@@ -104,9 +102,7 @@ onUnmounted(() => {
 <style scoped>
 .footer {
   background-color: #213c18;
-  /* Dark background for footer */
   color: #e5d5bb;
-  /* Light text color */
   padding: 20px;
   text-align: center;
 }
@@ -221,7 +217,6 @@ onUnmounted(() => {
 
 .footer-nav a:hover {
   color: #baa58c;
-  /* Color for when you hover over the text */
 }
 
 .social-icons {
@@ -247,39 +242,5 @@ hr {
 .copyright {
   font-size: 14px;
   color: #e5d5bb;
-}
-
-/* Add after existing styles */
-@media (max-width: 1024px) {
-  .footer-content {
-    flex-direction: column;
-    gap: 20px;
-    padding: 0 20px;
-  }
-
-  .container {
-    gap: 15px;
-  }
-
-  .time-unit {
-    width: 70px;
-    padding: 12px;
-  }
-
-  .number {
-    font-size: 2rem;
-  }
-
-  .label {
-    font-size: 0.9rem;
-  }
-
-  .footer-nav {
-    margin: 15px 0;
-  }
-
-  .social-icons {
-    margin-bottom: 15px;
-  }
 }
 </style>
