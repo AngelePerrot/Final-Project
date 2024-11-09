@@ -1,6 +1,6 @@
 <script setup>
 import { ref, reactive, computed } from 'vue'
-import { sendEmail } from '@/Services/emailService'
+import { sendEmail } from '@/helpers/emailService'
 import FormInput from '@/components/ContactForms/FormInput.vue'
 import FormTextarea from '@/components/ContactForms/FormTextarea.vue'
 

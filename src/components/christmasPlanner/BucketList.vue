@@ -1,5 +1,5 @@
 <script setup>
-import ListLayout from './ListLayout.vue'
+import ListLayout from '@/components/ListLayout.vue'
 
 defineProps({
   bucketList: Array,
@@ -22,7 +22,6 @@ defineProps({
         <template v-slot:actions>
           <button>Done</button>
         </template>
-        
       </ListLayout>
     </ul>
   </div>
@@ -56,11 +55,10 @@ ul {
 }
 
 .listImg:hover {
-    border: 4px solid #7b0a0a;
-    ;
+  border: 4px solid #7b0a0a;
 }
 
-.name{
+.name {
   padding: 2rem;
   margin: auto;
   justify-content: center;

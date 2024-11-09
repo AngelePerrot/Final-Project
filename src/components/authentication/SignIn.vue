@@ -14,7 +14,7 @@ const signIn = async () => {
   try {
     await userStore.signIn(email.value, password.value)
     await userStore.fetchUser()
-    redirect.push({ path: '/UserView' })
+    redirect.push({ path: '/' })
   } catch (error) {
     alert('Wrong password')
     throw error
@@ -23,7 +23,7 @@ const signIn = async () => {
 </script>
 
 <template>
-  <div class="Login-container">
+  <div class="auth-container">
     <div class="form-card">
       <h2 class="form-title">Sign In</h2>
       <form @submit.prevent="signIn">
@@ -50,15 +50,17 @@ const signIn = async () => {
 </template>
 
 <style scoped>
-.Login-container {
+.auth-container {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   width: 100vw;
-  background: no-repeat center center fixed;
-  background-image: url('/src/assets/img/C-tree.jpg');
+  background-image: url('/src/assets/img/Auth.jpg');
+  background-position: 80% center;
+  background-attachment: fixed;
   background-size: cover;
+  background-repeat: no-repeat;
   overflow: hidden;
   margin: 0;
 }
