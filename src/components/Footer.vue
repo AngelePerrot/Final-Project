@@ -64,7 +64,7 @@ onUnmounted(() => {
     <!-- Footer Content: Logo, Navigation, Social Media Icons-->
     <div class="footer-content">
       <div class="logo-container">
-        <img src="@/assets/img/logo.png" alt="Santa's Secret Logo" class="footer-logo">
+        <img src="@/assets/img/Logo.png" alt="Santa's Secret Logo" class="footer-logo">
       </div>
       <!-- Added functionality like in the Navbar with RouterLink -->
       <nav class="footer-nav">
@@ -141,7 +141,7 @@ onUnmounted(() => {
   border-radius: 50%;
   background-color: #e5d5bb;
 }
-
+.footer-logo {
   width: 80px; /* Adjust Size */
   border-radius: 50%;
   background-color: #E5D5BB;
