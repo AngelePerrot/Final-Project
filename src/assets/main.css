@@ -376,3 +376,15 @@ footer {
   position: absolute;
   bottom: 0;
 }
+
+@media (max-width: 1024px) {
+  .calendar-container {
+    width: 90%;
+    min-height: 600px;
+  }
+
+  .submit-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+  }
+}

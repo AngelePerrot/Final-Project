@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
 import { RouterLink } from 'vue-router'
 import { computed } from 'vue'
@@ -35,7 +34,7 @@ const scrollToTop = () => {
 
     <div class="menu">
       <RouterLink to="/"> Home </RouterLink>
-      <RouterLink v-if="isLoggedIn" to="/ChristmasPlanner">
+      <RouterLink v-if="isLoggedIn" to="/UserView">
         Christmas Planner
       </RouterLink>
       <RouterLink v-else to="/about"> About </RouterLink>
@@ -244,5 +243,21 @@ const scrollToTop = () => {
   border: 1px solid #213c18;
   border-radius: 8px;
   font-size: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .menu a {
+    margin: 0 0 0 40px;
+  }
+
+  .nav-link-left,
+  .nav-link-right {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .btn-group {
+    margin-right: 10px;
+  }
 }
 </style>

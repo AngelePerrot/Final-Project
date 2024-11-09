@@ -7,7 +7,6 @@ export const useUserStore = defineStore('user', {
     profile: null,
   }),
   actions: {
-    // Fetching user from database "Supabase" built in auth.user
     async fetchUser() {
       try {
         const {
@@ -15,7 +14,7 @@ export const useUserStore = defineStore('user', {
         } = await supabase.auth.getUser()
         if (user) {
           this.user = user
-          // Fetch the profile data
+
           const { data: profile, error } = await supabase
             .from('profiles')
             .select('*')
@@ -31,14 +30,12 @@ export const useUserStore = defineStore('user', {
       }
     },
 
-    // Update profile
     async updateProfile(updates) {
       const { error } = await supabase.from('profiles').upsert(updates)
       if (error) throw error
       this.profile = { ...this.profile, ...updates }
     },
 
-    // Sign Up
     async signUp(email, password) {
       try {
         const { user, error } = await supabase.auth.signUp({
@@ -48,14 +45,13 @@ export const useUserStore = defineStore('user', {
         if (error) throw error
         if (user) {
           this.user = user
-          // Create a profile entry for the new user with email
           const { error: profileError } = await supabase
             .from('profiles')
             .insert([
               {
                 id: this.user.id,
                 username: email,
-                email: email, // Include email in profile
+                email: email,
               },
             ])
           if (profileError) throw profileError
@@ -66,28 +62,49 @@ export const useUserStore = defineStore('user', {
       }
     },
 
-    // Sign In
     async signIn(email, password) {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: email,
-        password: password,
-      })
+      try {
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: email,
+          password: password,
+        })
 
-      if (error) throw error
-      if (data.user) {
-        this.user = data.user
-        const { data: profile } = await supabase
-          .from('profiles')
-          .select()
-          .eq('id', this.user.id)
-          .single()
+        if (error) throw error
+        if (data.user) {
+          this.user = data.user
+          
+          // Check if profile exists
+          const { data: profile, error: profileError } = await supabase
+            .from('profiles')
+            .select()
+            .eq('id', this.user.id)
+            .single()
 
-        if (profile) this.profile = profile
-        await this.fetchUser()
+          if (profileError || !profile) {
+            // Create profile if it doesn't exist
+            const { error: insertError } = await supabase
+              .from('profiles')
+              .insert([
+                {
+                  id: this.user.id,
+                  username: email,
+                  email: email,
+                  updated_at: new Date().toISOString(),
+                },
+              ])
+            if (insertError) throw insertError
+          } else {
+            this.profile = profile
+          }
+          
+          await this.fetchUser()
+        }
+      } catch (error) {
+        console.error('Sign in error:', error)
+        throw error
       }
     },
 
-    // Sign Out
     async signOut() {
       const { error } = await supabase.auth.signOut()
       if (error) throw error
