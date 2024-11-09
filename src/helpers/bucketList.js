@@ -27,7 +27,7 @@ const bucketList = [
   {
     id: 6,
     name: 'Have a Christmas Movie Night',
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlYw8KvTetE7LQsjaX2J0ybliaW1gO3ybXWw&s',
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKOp6CLJ0uktbaUTiUkOAweLXxDISbzQf1kA&s',
   },
   {
     id: 7,

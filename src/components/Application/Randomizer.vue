@@ -119,7 +119,6 @@ function startRoulette() {
   
 
 <style scoped>
-
 .roulette-container {
   position: relative;
   display: flex;
@@ -128,6 +127,51 @@ function startRoulette() {
   font-family: "Merienda";
   padding: 30px;
   background-color: var(--template-primary-clr);
+  background: linear-gradient(145deg, #213c18, #162810);  /* deep forest green gradient */
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+/* Add snow effect overlay */
+.roulette-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(2px 2px at 20% 20%, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 40% 40%, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 60% 60%, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 80% 80%, #fff, rgba(0, 0, 0, 0));
+  background-size: 200px 200px;
+  animation: snow 4s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes snow {
+  0% {
+    background-position:
+      0px 0px,
+      0px 0px,
+      0px 0px,
+      0px 0px;
+  }
+  100% {
+    background-position:
+      200px 200px,
+      100px 200px,
+      -100px 200px,
+      -200px 200px;
+  }
+}
+
+/* Update other elements to be above the snow effect */
+.selected-item, button, h2 {
+  position: relative;
+  z-index: 2;
 }
 
 .selected-item {

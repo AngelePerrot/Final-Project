@@ -139,6 +139,11 @@ onUnmounted(() => {
 .logo {
   width: 80px; /* Adjust Size */
   border-radius: 50%;
+  background-color: #e5d5bb;
+}
+
+  width: 80px; /* Adjust Size */
+  border-radius: 50%;
   background-color: #E5D5BB;
 }
 .footer-nav {
