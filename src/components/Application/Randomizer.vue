@@ -121,12 +121,13 @@ function startRoulette() {
 <style scoped>
 
 .roulette-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: "Merienda";
   padding: 30px;
-  background-color: #baa58c;
+  background-color: var(--template-primary-clr);
 }
 
 .selected-item {
@@ -182,5 +183,39 @@ h2 {
     font-family: "Merienda";
     color: white;
     padding:
+}
+
+.roulette-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(2px 2px at 20% 20%, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 40% 40%, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 60% 60%, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 80% 80%, #fff, rgba(0, 0, 0, 0));
+  background-size: 200px 200px;
+  animation: snowfall 4s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes snowfall {
+  0% {
+    background-position:
+      0px 0px,
+      0px 0px,
+      0px 0px,
+      0px 0px;
+  }
+  100% {
+    background-position:
+      200px 200px,
+      100px 200px,
+      -100px 200px,
+      -200px 200px;
+  }
 }
 </style>

@@ -2,7 +2,6 @@
 <script setup>
 import { RouterLink } from 'vue-router'
 import { ref, onMounted, onUnmounted } from 'vue'
-
 defineProps({
   brand: String,
   location: {
@@ -10,48 +9,38 @@ defineProps({
     default: 'Worldwide',
   },
 })
-
 const countdown = ref({
   days: 0,
   hours: 0,
   minutes: 0,
   seconds: 0,
 })
-
 function calculateCountdown() {
   const now = new Date()
   const christmas = new Date(now.getFullYear(), 11, 25) // Month is 0-indexed, so 11 is December
-
   if (now > christmas) {
     christmas.setFullYear(christmas.getFullYear() + 1) // Move to next year's Christmas if past Dec 25
   }
-
   const timeDifference = christmas - now
-
   countdown.value.days = Math.floor(timeDifference / (1000 * 60 * 60 * 24))
   countdown.value.hours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24)
   countdown.value.minutes = Math.floor((timeDifference / (1000 * 60)) % 60)
   countdown.value.seconds = Math.floor((timeDifference / 1000) % 60)
 }
-
 let countdownInterval
-
 onMounted(() => {
   calculateCountdown() // Initial calculation
   countdownInterval = setInterval(calculateCountdown, 1000) // Update every second
 })
-
 onUnmounted(() => {
   clearInterval(countdownInterval) // Clean up interval on component unmount
 })
 </script>
-
 <template>
   <div class="footer">
     <!-- Countdown: Days until Christmas -->
     <div class="countdown">
       <h2>Until Christmas:</h2>
-
       <div class="container">
         <div class="time-unit">
           <span class="number">{{ countdown.days }}</span>
@@ -71,46 +60,39 @@ onUnmounted(() => {
         </div>
       </div>
     </div>
-
     <hr />
-
     <!-- Footer Content: Logo, Navigation, Social Media Icons-->
     <div class="footer-content">
-      <img src="@/assets/img/Logo.png" alt="Logo Icon" class="logo" />
-
+      <div class="logo-container">
+        <img src="@/assets/img/logo.png" alt="Santa's Secret Logo" class="footer-logo">
+      </div>
       <!-- Added functionality like in the Navbar with RouterLink -->
       <nav class="footer-nav">
         <RouterLink to="/"> Home </RouterLink>
         <RouterLink to="/about"> About </RouterLink>
         <RouterLink to="/contact"> Contacts </RouterLink>
       </nav>
-
       <!-- Social Media Icons working after I added code in index.html -->
       <div class="social-icons">
-        <a href="#"><i class="bi bi-facebook"></i></a>
-        <a href="https://www.canva.com/design/DAGVV9aLc1Q/H-vPEAJux9EalGF2rVthdQ/view?utm_content=DAGVV9aLc1Q&utm_campaign=designshare&utm_medium=link&utm_source=editor"><i class="bi bi-instagram"></i></a>
-        <a href="#"><i class="bi bi-twitter"></i></a>
-        <a href="#"><i class="bi bi-tiktok"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61568645872379"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/santas_secret_24/"><i class="bi bi-instagram"></i></a>
+        <a href="https://x.com/SChecklist60172"><i class="bi bi-twitter"></i></a>
+        <a href="https://www.tiktok.com/@santas_secret_24"><i class="bi bi-tiktok"></i></a>
       </div>
     </div>
-
     <p class="copyright">
       &copy; 2024 {{ brand }} | {{ location }} <br />
       All rights reserved
     </p>
   </div>
 </template>
-
 <style scoped>
 .footer {
-  background-color: #213c18;
-  /* Dark background for footer */
-  color: #e5d5bb;
-  /* Light text color */
+  background-color: #213C18; /* Dark background for footer */
+  color: #E5D5BB; /* Light text color */
   padding: 20px;
   text-align: center;
 }
-
 .footer-content {
   display: flex;
   justify-content: space-between;
@@ -118,14 +100,12 @@ onUnmounted(() => {
   max-width: 1200px;
   margin: auto;
 }
-
 .countdown {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
 }
-
 .container {
   display: flex;
   justify-content: center;
@@ -133,10 +113,9 @@ onUnmounted(() => {
   flex-wrap: wrap;
   background-color: transparent;
 }
-
 .time-unit {
   text-align: center;
-  color: #e5d5bb;
+  color: #E5D5BB;
   background-color: rgba(255, 255, 255, 0.1);
   padding: 15px;
   border-radius: 8px;
@@ -144,142 +123,160 @@ onUnmounted(() => {
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s;
 }
-
 .time-unit:hover {
   transform: scale(1.1);
 }
-
 .number {
   display: block;
   font-size: 2.5rem;
   font-weight: bold;
 }
-
 .label {
   font-size: 1rem;
   margin-top: 5px;
   opacity: 0.7;
 }
-
 .logo {
-  position: relative;
-  width: 75px;
-  height: 75px;
-  border-radius: 20%;
-  background-color: white;
-  transition: filter 0.3s ease;
-  cursor: pointer;
-  overflow: hidden;
+  width: 80px; /* Adjust Size */
+  border-radius: 50%;
+  background-color: #E5D5BB;
 }
-
-.logo:hover {
-  filter: brightness(1.2);
-  transform: scale(1.1);
-}
-
-.logo::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(2px 2px at 20% 20%, #fff, rgba(0, 0, 0, 0)),
-    radial-gradient(2px 2px at 40% 40%, #fff, rgba(0, 0, 0, 0)),
-    radial-gradient(2px 2px at 60% 60%, #fff, rgba(0, 0, 0, 0));
-  background-size: 100px 100px;
-  animation: snow 4s linear infinite;
-  pointer-events: none;
-  border-radius: 20%;
-}
-
-@keyframes snow {
-  0% {
-    background-position:
-      0px 0px,
-      0px 0px,
-      0px 0px;
-  }
-  100% {
-    background-position:
-      50px 50px,
-      25px 50px,
-      -25px 50px;
-  }
-}
-
 .footer-nav {
   display: flex;
   gap: 20px;
 }
-
 .footer-nav a {
-  color: #e5d5bb;
+  color: #E5D5BB;
   text-decoration: none;
   font-size: 16px;
 }
-
 .footer-nav a:hover {
-  color: #baa58c;
-  /* Color for when you hover over the text */
+  color: #BAA58C; /* Color for when you hover over the text */
 }
-
 .social-icons {
   display: flex;
   gap: 10px;
 }
-
 .social-icons a {
-  color: #e5d5bb;
+  color: #E5D5BB;
   font-size: 18px;
   text-decoration: none;
 }
-
 hr {
   border: none;
-  border-top: 0.5px solid #e5d5bb;
-  /* Style for horizontal line */
-  opacity: 0.5;
-  /* Makes line more subtle */
+  border-top: 0.5px solid #E5D5BB; /* Style for horizontal line */
+  opacity: 0.5; /* Makes line more subtle */
   margin: 20px 0;
 }
-
 .copyright {
   font-size: 14px;
-  color: #e5d5bb;
+  color: #E5D5BB;
 }
-
-/* Add after existing styles */
-@media (max-width: 1024px) {
+/* Large Screens (Desktops) */
+@media (max-width: 1200px) {
   .footer-content {
     flex-direction: column;
     gap: 20px;
-    padding: 0 20px;
   }
-
+  .logo {
+    width: 70px;
+  }
+  .footer-nav a {
+    font-size: 15px;
+  }
+}
+/* Medium Screens (Tablets) */
+@media (max-width: 992px) {
+  .footer {
+    padding: 15px;
+  }
   .container {
     gap: 15px;
   }
-
   .time-unit {
     width: 70px;
-    padding: 12px;
   }
-
+  .footer-nav a {
+    font-size: 14px;
+  }
+  .social-icons a {
+    font-size: 16px;
+  }
+}
+/* Small Screens (Mobile Devices) */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+  }
+  .logo {
+    width: 60px;
+  }
+  .footer-nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .container {
+    gap: 10px;
+  }
+  .time-unit {
+    width: 60px;
+    padding: 10px;
+  }
   .number {
     font-size: 2rem;
   }
-
   .label {
     font-size: 0.9rem;
   }
-
-  .footer-nav {
-    margin: 15px 0;
-  }
-
   .social-icons {
-    margin-bottom: 15px;
+    gap: 8px;
   }
+}
+/* Extra Small Screens (Small mobile devices) */
+@media (max-width: 576px) {
+  .footer-content {
+    gap: 10px;
+  }
+  .logo {
+    width: 50px;
+  }
+  .container {
+    gap: 5px;
+  }
+  .time-unit {
+    width: 50px;
+    padding: 8px;
+  }
+  .number {
+    font-size: 1.8rem;
+  }
+  .label {
+    font-size: 0.8rem;
+  }
+  .footer-nav a {
+    font-size: 12px;
+  }
+  .social-icons a {
+    font-size: 14px;
+  }
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.footer-logo {
+  width: 75px;
+  height: 75px;
+  border-radius: 20%;
+  background-color: white;
+  transition: transform 0.3s ease;
+}
+
+.footer-logo:hover {
+  transform: scale(1.1);
 }
 </style>
