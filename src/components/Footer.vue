@@ -88,8 +88,8 @@ onUnmounted(() => {
 </template>
 <style scoped>
 .footer {
-  background-color: #213C18; /* Dark background for footer */
-  color: #E5D5BB; /* Light text color */
+  background-color: #213c18; /* Dark background for footer */
+  color: #e5d5bb; /* Light text color */
   padding: 20px;
   text-align: center;
 }
@@ -156,7 +156,7 @@ onUnmounted(() => {
   font-size: 16px;
 }
 .footer-nav a:hover {
-  color: #BAA58C; /* Color for when you hover over the text */
+  color: #baa58c; /* Color for when you hover over the text */
 }
 .social-icons {
   display: flex;
@@ -169,45 +169,54 @@ onUnmounted(() => {
 }
 hr {
   border: none;
-  border-top: 0.5px solid #E5D5BB; /* Style for horizontal line */
+  border-top: 0.5px solid #e5d5bb; /* Style for horizontal line */
   opacity: 0.5; /* Makes line more subtle */
   margin: 20px 0;
 }
 .copyright {
   font-size: 14px;
-  color: #E5D5BB;
+  color: #e5d5bb;
 }
+
 /* Large Screens (Desktops) */
 @media (max-width: 1200px) {
   .footer-content {
     flex-direction: column;
     gap: 20px;
   }
+
   .logo {
     width: 70px;
   }
+
   .footer-nav a {
     font-size: 15px;
   }
 }
+
 /* Medium Screens (Tablets) */
 @media (max-width: 992px) {
   .footer {
     padding: 15px;
   }
+
   .container {
     gap: 15px;
   }
+
   .time-unit {
     width: 70px;
   }
+
   .footer-nav a {
     font-size: 14px;
   }
+
   .social-icons a {
     font-size: 16px;
   }
 }
+
 /* Small Screens (Mobile Devices) */
 @media (max-width: 768px) {
   .footer-content {
@@ -216,72 +225,71 @@ hr {
     text-align: center;
     gap: 15px;
   }
+
   .logo {
     width: 60px;
   }
+
   .footer-nav {
     flex-direction: column;
     gap: 10px;
   }
+
   .container {
     gap: 10px;
   }
+
   .time-unit {
     width: 60px;
     padding: 10px;
   }
+
   .number {
     font-size: 2rem;
   }
+
   .label {
     font-size: 0.9rem;
   }
+
   .social-icons {
     gap: 8px;
   }
 }
+
 /* Extra Small Screens (Small mobile devices) */
 @media (max-width: 576px) {
   .footer-content {
     gap: 10px;
   }
+
   .logo {
     width: 50px;
   }
+
   .container {
     gap: 5px;
   }
+
   .time-unit {
     width: 50px;
     padding: 8px;
   }
+
   .number {
     font-size: 1.8rem;
   }
+
   .label {
     font-size: 0.8rem;
   }
+
   .footer-nav a {
     font-size: 12px;
   }
+
   .social-icons a {
     font-size: 14px;
   }
-}
-.logo-container {
-  display: flex;
-  align-items: center;
-}
-
-.footer-logo {
-  width: 75px;
-  height: 75px;
-  border-radius: 20%;
-  background-color: white;
-  transition: transform 0.3s ease;
-}
-
-.footer-logo:hover {
-  transform: scale(1.1);
 }
 </style>
