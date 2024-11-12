@@ -1,12 +1,13 @@
 <script setup>
 import { RouterLink } from 'vue-router'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/Store/userStore'
 
 const userStore = useUserStore()
 const router = useRouter()
 const isLoggedIn = computed(() => userStore.isLoggedIn)
+const isMobileMenuOpen = ref(false)
 
 const signOut = async () => {
   try {
@@ -24,14 +25,69 @@ const scrollToTop = () => {
     behavior: 'smooth',
   })
 }
+
+const toggleMobileMenu = () => {
+  isMobileMenuOpen.value = !isMobileMenuOpen.value
+}
+
+const handleSignOut = () => {
+  toggleMobileMenu()
+  signOut()
+}
 </script>
 
 <template>
   <nav class="navbar">
+    <button class="hamburger" @click="toggleMobileMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <div class="logo-image" @click="scrollToTop" title="Back to top">
       <img src="@/assets/img/Logo.png" alt="Logo" />
     </div>
+    <div class="mobile-menu" :class="{ active: isMobileMenuOpen }">
+      <RouterLink @click="toggleMobileMenu" to="/"> Home </RouterLink>
+      <RouterLink v-if="isLoggedIn" @click="toggleMobileMenu" to="/UserView">
+        Christmas Planner
+      </RouterLink>
+      <RouterLink v-else @click="toggleMobileMenu" to="/about">
+        About
+      </RouterLink>
+      <RouterLink @click="toggleMobileMenu" to="/contact">
+        Contacts
+      </RouterLink>
 
+      <!-- Auth buttons for mobile -->
+      <div v-if="isLoggedIn" class="mobile-auth-buttons">
+        <router-link
+          @click="toggleMobileMenu"
+          to="/profile"
+          class="nav-link-left btn"
+        >
+          Profile
+        </router-link>
+        <button @click="handleSignOut" class="nav-link-right btn">
+          Sign Out
+        </button>
+      </div>
+      <div v-else class="mobile-auth-buttons">
+        <router-link
+          @click="toggleMobileMenu"
+          to="/auth/signIn"
+          class="nav-link-left btn"
+        >
+          Sign In
+        </router-link>
+        <router-link
+          @click="toggleMobileMenu"
+          to="/auth/signUp"
+          class="nav-link-right btn"
+        >
+          Sign Up
+        </router-link>
+      </div>
+    </div>
     <div class="menu">
       <RouterLink to="/"> Home </RouterLink>
       <RouterLink v-if="isLoggedIn" to="/UserView">
@@ -67,6 +123,48 @@ const scrollToTop = () => {
         </router-link>
       </div>
     </div>
+    <div class="mobile-menu" :class="{ active: isMobileMenuOpen }">
+      <RouterLink @click="toggleMobileMenu" to="/"> Home </RouterLink>
+      <RouterLink v-if="isLoggedIn" @click="toggleMobileMenu" to="/UserView">
+        Christmas Planner
+      </RouterLink>
+      <RouterLink v-else @click="toggleMobileMenu" to="/about">
+        About
+      </RouterLink>
+      <RouterLink @click="toggleMobileMenu" to="/contact">
+        Contacts
+      </RouterLink>
+
+      <!-- Auth buttons for mobile -->
+      <div v-if="isLoggedIn" class="mobile-auth-buttons">
+        <router-link
+          @click="toggleMobileMenu"
+          to="/profile"
+          class="nav-link-left btn"
+        >
+          Profile
+        </router-link>
+        <button @click="handleSignOut" class="nav-link-right btn">
+          Sign Out
+        </button>
+      </div>
+      <div v-else class="mobile-auth-buttons">
+        <router-link
+          @click="toggleMobileMenu"
+          to="/auth/signIn"
+          class="nav-link-left btn"
+        >
+          Sign In
+        </router-link>
+        <router-link
+          @click="toggleMobileMenu"
+          to="/auth/signUp"
+          class="nav-link-right btn"
+        >
+          Sign Up
+        </router-link>
+      </div>
+    </div>
   </nav>
 </template>
 
@@ -82,6 +180,7 @@ const scrollToTop = () => {
   width: 100%;
   height: 100px;
   font-family: 'Chicle', serif;
+  z-index: 1000;
 }
 
 .logo-image {
@@ -92,6 +191,7 @@ const scrollToTop = () => {
   width: 75px;
   height: 75px;
   margin: 8px 0 10px 10px;
+  z-index: 1002;
 }
 
 .logo-image:hover {
@@ -126,7 +226,78 @@ const scrollToTop = () => {
   pointer-events: none;
   border-radius: 20%;
 }
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1002;
+  position: relative;
+}
 
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu {
+  display: none;
+  z-index: 1001;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--template-primary-clr);
+  padding-top: 100px;
+}
+
+.mobile-menu.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.mobile-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 10px;
+}
+
+.mobile-auth-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 80%;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar .menu,
+  .navbar .btn-group {
+    display: none !important;
+  }
+
+  .mobile-menu .nav-link-left,
+  .mobile-menu .nav-link-right {
+    width: 100%;
+    text-align: center;
+    border-radius: 8px;
+    margin: 0;
+  }
+}
 @keyframes snow {
   0% {
     background-position:
